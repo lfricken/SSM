@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="MemoryDump.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MemoryDump.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EA3652A0-E0A2-45C1-B744-DE0F06C56804}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
