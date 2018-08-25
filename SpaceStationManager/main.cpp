@@ -1,13 +1,16 @@
+#include "MemoryDump.hpp"
+#include "GraphLib.hpp"
+
 
 #include <iostream>
 using namespace std;
-
-#include "GraphLib.hpp"
 
 
 int main()
 {
 	cout << fnGraphLib();
+
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 

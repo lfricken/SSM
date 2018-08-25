@@ -15,15 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GraphLib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GraphLib.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphLibCore.hpp">
+    <ClInclude Include="MemoryDump.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

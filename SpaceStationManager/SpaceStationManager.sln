@@ -6,9 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpaceStationManager", "SpaceStationManager.vcxproj", "{EBC213C7-7AE2-42A3-A4EA-184CD0674944}"
 	ProjectSection(ProjectDependencies) = postProject
 		{13571C53-D779-434E-B827-BFC1234E579F} = {13571C53-D779-434E-B827-BFC1234E579F}
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804} = {EA3652A0-E0A2-45C1-B744-DE0F06C56804}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphLib", "..\GraphLib\GraphLib.vcxproj", "{13571C53-D779-434E-B827-BFC1234E579F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804} = {EA3652A0-E0A2-45C1-B744-DE0F06C56804}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DebuggingLib", "..\DebuggingLib\DebuggingLib.vcxproj", "{EA3652A0-E0A2-45C1-B744-DE0F06C56804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +40,14 @@ Global
 		{13571C53-D779-434E-B827-BFC1234E579F}.Release|x64.Build.0 = Release|x64
 		{13571C53-D779-434E-B827-BFC1234E579F}.Release|x86.ActiveCfg = Release|Win32
 		{13571C53-D779-434E-B827-BFC1234E579F}.Release|x86.Build.0 = Release|Win32
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Debug|x64.ActiveCfg = Debug|x64
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Debug|x64.Build.0 = Debug|x64
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Debug|x86.Build.0 = Debug|Win32
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Release|x64.ActiveCfg = Release|x64
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Release|x64.Build.0 = Release|x64
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Release|x86.ActiveCfg = Release|Win32
+		{EA3652A0-E0A2-45C1-B744-DE0F06C56804}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
