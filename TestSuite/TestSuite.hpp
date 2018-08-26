@@ -15,6 +15,8 @@
 
 
 
+#pragma warning( disable : 4251)
+
 class TestSuite;
 TESTSUITE_API TestSuite& getSuite();
 
@@ -102,7 +104,6 @@ private:
 		virtual void testBody(); \
 	} TEST_INST(Class, Function); \
 	void CLASS_NAME(Class, Function)::testBody()
-
 
 
 

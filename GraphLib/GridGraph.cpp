@@ -8,15 +8,15 @@ namespace Graph
 	// see GraphLib.h for the class definition
 	GridGraph::GridGraph(const Math::Vec2& dimensions)
 	{
-		vertexes.resize(dimensions.x);
+		vertexes.resize(static_cast<unsigned>(dimensions.x));
 		for(auto it = vertexes.begin(); it != vertexes.end(); ++it)
 		{
-			it->resize(dimensions.y);
+			it->resize(static_cast<unsigned>(dimensions.y));
 		}
 
 		// disable edges of graph
 		// top
-		for(int x = 0; x < dimensions.x; x++)
+		for(float x = 0; x < dimensions.x; x++)
 		{
 			auto top = getVertex(Vec2(x, 0));
 			top->edges[Vertex::UpLeft] = false;
@@ -25,7 +25,7 @@ namespace Graph
 		}
 
 		// bottom
-		for(int x = 0; x < dimensions.x; x++)
+		for(float x = 0; x < dimensions.x; x++)
 		{
 			auto bottom = getVertex(Vec2(x, dimensions.y - 1));
 			bottom->edges[Vertex::DownLeft] = false;
@@ -34,7 +34,7 @@ namespace Graph
 		}
 
 		// left
-		for(int y = 0; y < dimensions.y; y++)
+		for(float y = 0; y < dimensions.y; y++)
 		{
 			auto left = getVertex(Vec2(0, y));
 			left->edges[Vertex::UpLeft] = false;
@@ -43,7 +43,7 @@ namespace Graph
 		}
 
 		// right
-		for(int y = 0; y < dimensions.y; y++)
+		for(float y = 0; y < dimensions.y; y++)
 		{
 			auto right = getVertex(Vec2(dimensions.x - 1, y));
 			right->edges[Vertex::UpRight] = false;
@@ -52,9 +52,9 @@ namespace Graph
 		}
 
 		// give vertexes their positions
-		for(int x = 0; x < dimensions.x; ++x)
+		for(float x = 0; x < dimensions.x; ++x)
 		{
-			for(int y = 0; y < dimensions.y; ++y)
+			for(float y = 0; y < dimensions.y; ++y)
 			{
 				Vec2 pos(x, y);
 				getVertex(pos)->thisPosition = pos;
@@ -64,7 +64,7 @@ namespace Graph
 
 	Vertex* GridGraph::getVertex(const Math::Vec2& cell)
 	{
-		return &vertexes[cell.x][cell.y];
+		return &vertexes[static_cast<unsigned>(cell.x)][static_cast<unsigned>(cell.y)];
 	}
 
 }

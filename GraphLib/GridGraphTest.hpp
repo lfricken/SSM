@@ -32,9 +32,9 @@ TEST(GridGraph, allPathExceptEdgesTrue, "All edges default true except edges of 
 	GridGraph grid(gridSize);
 
 	// 1 and -1 to avoid edges
-	for(int x = 1; x < gridSize.x - 1; ++x)
+	for(float x = 1; x < gridSize.x - 1; ++x)
 	{
-		for(int y = 1; y < gridSize.y - 1; ++y)
+		for(float y = 1; y < gridSize.y - 1; ++y)
 		{
 			auto a = grid.getVertex(Vec2(x, y));
 			for(int dir = 0; dir < Vertex::NumDirections; ++dir)
@@ -46,7 +46,7 @@ TEST(GridGraph, allPathExceptEdgesTrue, "All edges default true except edges of 
 
 
 	// top
-	for(int x = 0; x < gridSize.x; x++)
+	for(float x = 0; x < gridSize.x; x++)
 	{
 		auto top = grid.getVertex(Vec2(x, 0));
 		EXPECT(top->edges[Vertex::UpLeft], == , false);
@@ -57,7 +57,7 @@ TEST(GridGraph, allPathExceptEdgesTrue, "All edges default true except edges of 
 	}
 
 	// bottom
-	for(int x = 0; x < gridSize.x; x++)
+	for(float x = 0; x < gridSize.x; x++)
 	{
 		auto bottom = grid.getVertex(Vec2(x, gridSize.y - 1));
 		EXPECT(bottom->edges[Vertex::DownLeft], == , false);
@@ -68,7 +68,7 @@ TEST(GridGraph, allPathExceptEdgesTrue, "All edges default true except edges of 
 	}
 
 	// left
-	for(int y = 0; y < gridSize.y; y++)
+	for(float y = 0; y < gridSize.y; y++)
 	{
 		auto left = grid.getVertex(Vec2(0, y));
 		EXPECT(left->edges[Vertex::UpLeft], == , false);
@@ -79,7 +79,7 @@ TEST(GridGraph, allPathExceptEdgesTrue, "All edges default true except edges of 
 	}
 
 	// right
-	for(int y = 0; y < gridSize.y; y++)
+	for(float y = 0; y < gridSize.y; y++)
 	{
 		auto right = grid.getVertex(Vec2(gridSize.x - 1, y));
 		EXPECT(right->edges[Vertex::UpRight], == , false);

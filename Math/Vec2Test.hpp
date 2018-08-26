@@ -32,6 +32,6 @@ TEST(Vec2, Rotate, "Rotate")
 TEST(Vec2, Angle, "Measure Angle")
 {
 	Vec2 dir(2, 2);
-	int angle = Math::toDeg(dir.toAngle());
-	EXPECT(angle, == , 45.f);
+	int angle = static_cast<int>(Math::toDeg(dir.toAngle()));
+	EXPECT(angle, == , 45);
 }

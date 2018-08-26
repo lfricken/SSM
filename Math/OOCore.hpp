@@ -12,6 +12,8 @@
 #define MATH_API __declspec(dllimport)
 #endif
 
+#pragma warning( disable : 4251)
+
 template<typename T>
 using sp = std::shared_ptr < T > ;
 
