@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{740E81CA-480F-3EAE-86A1-49600A3E7C3A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{08170F48-EA9B-36FD-94BD-5452EEB493F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public API">
+      <UniqueIdentifier>{9935567B-649B-3B6F-B871-23E7FCAEDAC4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="allocator.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="assertions.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="autolink.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="features.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="forwards.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="json.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="reader.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="value.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="writer.h">
+      <Filter>Public API</Filter>
+    </ClInclude>
+    <ClInclude Include="json_tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="json_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json_value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="json_writer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="json_valueiterator.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="version.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
