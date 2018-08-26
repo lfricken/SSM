@@ -12,7 +12,7 @@
 #include <iostream>
 #include <sstream>
 
-#ifdef GRAPHLIB_EXPORTS
+#ifdef DEBUGGINGLIB_EXPORTS
 #define DEBUGGINGLIB_API __declspec(dllexport)
 #else
 #define DEBUGGINGLIB_API __declspec(dllimport)
@@ -24,9 +24,16 @@
 void LibDebugOutput(std::string file, int line, std::string message)
 {
 	std::wostringstream os_;
-	os_ << file.c_str() << "(" << line << "): " << message.c_str() << std::endl;
+	if(line != -1)
+	{
+		os_ << file.c_str() << "(" << line << "): ";
+	}
+	os_ << message.c_str() << std::endl;
 	OutputDebugStringW(os_.str().c_str());
 }
+
+#define SIMPLEOUTPUT(message) \
+LibDebugOutput("", -1, message)
 
 #define DEBUGOUTPUT(message) \
 LibDebugOutput(__FILE__, __LINE__, message)

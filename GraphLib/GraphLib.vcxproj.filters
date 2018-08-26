@@ -9,17 +9,29 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{9c7a6f8e-6e2a-49d3-bdb1-8459e4444146}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GraphLib.cpp">
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphLib.hpp">
+    <ClInclude Include="GraphLibCore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphLibCore.hpp">
+    <ClInclude Include="Vertex.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridGraphTest.hpp">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="GridGraph.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
