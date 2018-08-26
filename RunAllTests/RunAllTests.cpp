@@ -1,5 +1,6 @@
 #include "StringTest.hpp"
 #include "GridGraphTest.hpp"
+#include "Vec2Test.hpp"
 
 int main()
 {

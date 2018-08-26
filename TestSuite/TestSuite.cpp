@@ -11,10 +11,10 @@ TESTSUITE_API TestSuite& getSuite()
 }
 
 
-TestClassBase::TestClassBase(std::string Class, std::string Function)
+TestClassBase::TestClassBase(std::string Class, std::string _Message)
 {
 	ClassName = Class;
-	FunctionName = Function;
+	Message = _Message;
 	pTestRunner = &getSuite();
 	pTestRunner->give(this);
 }
@@ -22,9 +22,9 @@ std::string TestClassBase::getClass()
 {
 	return ClassName;
 }
-std::string TestClassBase::getFunction()
+std::string TestClassBase::getMessage()
 {
-	return FunctionName;
+	return Message;
 }
 
 
@@ -87,7 +87,7 @@ void TestSuite::runAllTests()
 			m_passed = true;
 
 			run();
-			std::cout << " " << (**it).getFunction() << "\n";
+			std::cout << " " << (**it).getMessage() << "\n";
 			(**it).testBody();
 			if(m_passed)
 				ok();

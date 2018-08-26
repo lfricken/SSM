@@ -26,6 +26,7 @@
     <ClInclude Include="Random.hpp" />
     <ClInclude Include="StringTest.hpp" />
     <ClInclude Include="Vec2.hpp" />
+    <ClInclude Include="Vec2Test.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Convert.cpp" />

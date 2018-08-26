@@ -28,22 +28,22 @@ namespace Graph
 		std::vector<Math::Vec2> pos;
 
 		if(edges[Right])
-			pos.push_back(right);
+			pos.push_back(thisPosition + right);
 		if(edges[UpRight])
-			pos.push_back(upright);
+			pos.push_back(thisPosition + upright);
 		if(edges[Up])
-			pos.push_back(up);
+			pos.push_back(thisPosition + up);
 		if(edges[UpLeft])
-			pos.push_back(upleft);
+			pos.push_back(thisPosition + upleft);
 
 		if(edges[Left])
-			pos.push_back(left);
+			pos.push_back(thisPosition + left);
 		if(edges[DownLeft])
-			pos.push_back(downleft);
+			pos.push_back(thisPosition + downleft);
 		if(edges[Down])
-			pos.push_back(down);
+			pos.push_back(thisPosition + down);
 		if(edges[DownRight])
-			pos.push_back(downright);
+			pos.push_back(thisPosition + downright);
 
 		return pos;
 	}

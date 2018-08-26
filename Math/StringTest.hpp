@@ -5,7 +5,7 @@
 
 const std::string validValue = "val";
 
-TEST(String, toInt)
+TEST(String, toInt, "To Int")
 {
 	String s;
 	int val;
@@ -18,7 +18,7 @@ TEST(String, toInt)
 	val = s.toInt();
 	EXPECT(val, == , 10);
 }
-TEST(String, toFloat)
+TEST(String, toFloat, "To Float")
 {
 	String s;
 	s = "45.00";
@@ -28,14 +28,14 @@ TEST(String, toFloat)
 	val = s.toFloat();
 	EXPECT(val, == , 45.56f);
 }
-TEST(String, toDouble)
+TEST(String, toDouble, "To Double")
 {
 	String s;
 	s = "45.123456789";
 	double val = s.toDouble();
 	EXPECT(val, == , 45.123456789);
 }
-TEST(String, fromInt)
+TEST(String, fromInt, "From Int")
 {
 	String s;
 	s.from(0);
@@ -48,7 +48,7 @@ TEST(String, fromInt)
 	String l(b);
 	EXPECT(l, == , "1678");
 }
-TEST(String, fromFloat)
+TEST(String, fromFloat, "From Float")
 {
 	String s;
 	s.from(2.00f);
@@ -58,7 +58,7 @@ TEST(String, fromFloat)
 	String l(2.56f);
 	EXPECT(l, == , "2.56");
 }
-TEST(String, fromDouble)
+TEST(String, fromDouble, "From Double")
 {
 	String s;
 	s.from(2.4784);
@@ -66,25 +66,25 @@ TEST(String, fromDouble)
 	String l(2.4784);
 	EXPECT(l, == , "2.4784");
 }
-TEST(String, fromStdStringAssign)
+TEST(String, fromStdStringAssign, "From std::string Assignment")
 {
 	std::string orig = validValue;
 	String s = orig;
 	EXPECT(s, == , validValue);
 }
-TEST(String, fromStdStringConstruct)
+TEST(String, fromStdStringConstruct, "From std::string Construct")
 {
 	std::string orig = validValue;
 	String s(orig);
 	EXPECT(s, == , validValue);
 }
-TEST(String, toStdStringAssign)
+TEST(String, toStdStringAssign, "To std::string Assign")
 {
 	String orig = validValue;
 	std::string s = orig;
 	EXPECT(s, == , validValue);
 }
-TEST(String, toStdStringConstruct)
+TEST(String, toStdStringConstruct, "To std::string Construct")
 {
 	String orig = validValue;
 	std::string s(orig);

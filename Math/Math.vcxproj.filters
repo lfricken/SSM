@@ -35,6 +35,9 @@
     <ClInclude Include="StringTest.hpp">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="Vec2Test.hpp">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Convert.cpp">

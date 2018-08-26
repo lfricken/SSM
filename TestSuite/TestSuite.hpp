@@ -22,14 +22,14 @@ TESTSUITE_API TestSuite& getSuite();
 class TESTSUITE_API TestClassBase
 {
 public:
-	TestClassBase(std::string Class, std::string Function);
+	TestClassBase(std::string Class, std::string Message);
 
 	std::string getClass();
-	std::string getFunction();
+	std::string getMessage();
 	virtual void testBody() = 0;
 private:
 	std::string ClassName;
-	std::string FunctionName;
+	std::string Message;
 	TestSuite* pTestRunner;
 };
 
@@ -92,11 +92,11 @@ private:
 
 
 
-#define TEST(Class, Function) \
+#define TEST(Class, Function, Message) \
 	class CLASS_NAME(Class, Function) : public TestClassBase \
 	{ \
 	public: \
-		CLASS_NAME(Class, Function)() : TestClassBase(#Class, #Function) \
+		CLASS_NAME(Class, Function)() : TestClassBase(#Class, Message) \
 		{ \
 		} \
 		virtual void testBody(); \
