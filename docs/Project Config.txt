@@ -1,0 +1,18 @@
+
+
+General
+	Output Directory $(SolutionDir)$(Configuration)\
+	Intermediate $(Configuration)\
+	Target Name $(ProjectName)
+
+Linker General
+	Additional Library Directories $(SolutionDir)$(Configuration)\
+
+Linker Debugging
+	Generate Program Database File $(OutDir)$(TargetName).pdb
+
+Linker Advanced
+	Import Library $(OutDir)$(TargetName).lib
+
+
+	

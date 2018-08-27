@@ -19,7 +19,261 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimAlloc.cpp" />
+    <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="BallisticWeapon.cpp" />
+    <ClCompile Include="BasePlayerTraits.cpp" />
+    <ClCompile Include="BatchLayers.cpp" />
+    <ClCompile Include="Beam.cpp" />
+    <ClCompile Include="BlackHoleGraphic.cpp" />
+    <ClCompile Include="Blueprintable.cpp" />
+    <ClCompile Include="BlueprintLoader.cpp" />
+    <ClCompile Include="BodyComponent.cpp" />
+    <ClCompile Include="BuildBounds.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Capacitor.cpp" />
+    <ClCompile Include="CaptureArea.cpp" />
+    <ClCompile Include="CaptureGraphic.cpp" />
+    <ClCompile Include="Chatbox.cpp" />
+    <ClCompile Include="Chunk.cpp" />
+    <ClCompile Include="ChunkSpawner.cpp" />
+    <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="CollisionCategory.cpp" />
+    <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="ControlFactory.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Convert.cpp" />
+    <ClCompile Include="DebugDraw.cpp" />
+    <ClCompile Include="Decoration.cpp" />
+    <ClCompile Include="DecorationEngine.cpp" />
+    <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="DragComponent.cpp" />
+    <ClCompile Include="Draggable.cpp" />
+    <ClCompile Include="DraggableSurface.cpp" />
+    <ClCompile Include="DragUpdater.cpp" />
+    <ClCompile Include="EditBox.cpp" />
+    <ClCompile Include="Eventer.cpp" />
+    <ClCompile Include="EventTypes.cpp" />
+    <ClCompile Include="Extractor.cpp" />
+    <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="FixtureComponent.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
+    <ClCompile Include="GraphicsComponentUpdater.cpp" />
+    <ClCompile Include="GraphicsLayer.cpp" />
+    <ClCompile Include="GrappleWeapon.cpp" />
+    <ClCompile Include="GravityField.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="IOBase.cpp" />
+    <ClCompile Include="IOComponent.cpp" />
+    <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="JSON.cpp" />
+    <ClCompile Include="LaserWeapon.cpp" />
+    <ClCompile Include="LinearMeter.cpp" />
+    <ClCompile Include="Loot.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="Mind.cpp" />
+    <ClCompile Include="Minimap.cpp" />
+    <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="MissileWeapon.cpp" />
+    <ClCompile Include="Module.cpp" />
+    <ClCompile Include="ModuleParent.cpp" />
+    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="NetworkBoss.cpp" />
+    <ClCompile Include="NetworkComponent.cpp" />
+    <ClCompile Include="NetworkedSelection.cpp" />
+    <ClCompile Include="NetworkFactory.cpp" />
+    <ClCompile Include="NumericDisplay.cpp" />
+    <ClCompile Include="Overlay.cpp" />
+    <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Particles.cpp" />
+    <ClCompile Include="Picture.cpp" />
+    <ClCompile Include="Plating.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectileMan.cpp" />
+    <ClCompile Include="ProjectileModule.cpp" />
+    <ClCompile Include="ProjectileWeaponBase.cpp" />
+    <ClCompile Include="QuadBatchContainer.cpp" />
+    <ClCompile Include="QuadComponent.cpp" />
+    <ClCompile Include="Radar.cpp" />
+    <ClCompile Include="Range.cpp" />
+    <ClCompile Include="RangeList.cpp" />
+    <ClCompile Include="RayCastCallback.cpp" />
+    <ClCompile Include="Reactor.cpp" />
+    <ClCompile Include="RegisterFunction.cpp" />
+    <ClCompile Include="Relay.cpp" />
+    <ClCompile Include="Replicator.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="ReturnSelection.cpp" />
+    <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="SelectableItem.cpp" />
+    <ClCompile Include="Sensor.cpp" />
+    <ClCompile Include="Shaker.cpp" />
+    <ClCompile Include="Shield.cpp" />
+    <ClCompile Include="ShipAI.cpp" />
+    <ClCompile Include="ShipBuilder.cpp" />
+    <ClCompile Include="ShipModule.cpp" />
+    <ClCompile Include="ShipProfile.cpp" />
+    <ClCompile Include="SlaveLocator.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Spinner.cpp" />
+    <ClCompile Include="Stealth.cpp" />
+    <ClCompile Include="Store.cpp" />
+    <ClCompile Include="Teleporter.cpp" />
+    <ClCompile Include="TextureAllocator.cpp" />
+    <ClCompile Include="Thruster.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Tooltip.cpp" />
+    <ClCompile Include="TriggerSensor.cpp" />
+    <ClCompile Include="Turret.cpp" />
+    <ClCompile Include="UniversalContactListener.cpp" />
+    <ClCompile Include="Universe.cpp" />
+    <ClCompile Include="UpgradeType.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WidgetBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimAlloc.hpp" />
+    <ClInclude Include="Animation.hpp" />
+    <ClInclude Include="Animator.hpp" />
+    <ClInclude Include="BallisticWeapon.hpp" />
+    <ClInclude Include="BasePlayerTraits.hpp" />
+    <ClInclude Include="BatchLayers.hpp" />
+    <ClInclude Include="Beam.hpp" />
+    <ClInclude Include="BlackHoleGraphic.hpp" />
+    <ClInclude Include="Blueprintable.hpp" />
+    <ClInclude Include="BlueprintLoader.hpp" />
+    <ClInclude Include="BodyComponent.hpp" />
+    <ClInclude Include="BuildBounds.hpp" />
+    <ClInclude Include="Button.hpp" />
+    <ClInclude Include="Camera.hpp" />
+    <ClInclude Include="Capacitor.hpp" />
+    <ClInclude Include="CaptureArea.hpp" />
+    <ClInclude Include="CaptureGraphic.hpp" />
+    <ClInclude Include="Chatbox.hpp" />
+    <ClInclude Include="Chunk.hpp" />
+    <ClInclude Include="ChunkSpawner.hpp" />
+    <ClInclude Include="ClassRegister.hpp" />
+    <ClInclude Include="ClassRegisterType.hpp" />
+    <ClInclude Include="Clock.hpp" />
+    <ClInclude Include="CollisionCategory.hpp" />
+    <ClInclude Include="CommandInfo.hpp" />
+    <ClInclude Include="Condition.hpp" />
+    <ClInclude Include="Connection.hpp" />
+    <ClInclude Include="ControlFactory.hpp" />
+    <ClInclude Include="Controller.hpp" />
+    <ClInclude Include="Convert.hpp" />
+    <ClInclude Include="Courier.hpp" />
+    <ClInclude Include="DebugDraw.hpp" />
+    <ClInclude Include="Debugging.hpp" />
+    <ClInclude Include="Decoration.hpp" />
+    <ClInclude Include="DecorationEngine.hpp" />
+    <ClInclude Include="Directive.hpp" />
+    <ClInclude Include="Directory.hpp" />
+    <ClInclude Include="DragComponent.hpp" />
+    <ClInclude Include="Draggable.hpp" />
+    <ClInclude Include="DraggableSurface.hpp" />
+    <ClInclude Include="DragUpdater.hpp" />
+    <ClInclude Include="EditBox.hpp" />
+    <ClInclude Include="Eventer.hpp" />
+    <ClInclude Include="EventTypes.hpp" />
+    <ClInclude Include="Extractor.hpp" />
+    <ClInclude Include="Factory.hpp" />
+    <ClInclude Include="FixtureComponent.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Globals.hpp" />
+    <ClInclude Include="GraphicsComponent.hpp" />
+    <ClInclude Include="GraphicsComponentUpdater.hpp" />
+    <ClInclude Include="GraphicsLayer.hpp" />
+    <ClInclude Include="GrappleWeapon.hpp" />
+    <ClInclude Include="GravityField.hpp" />
+    <ClInclude Include="Grid.hpp" />
+    <ClInclude Include="Health.hpp" />
+    <ClInclude Include="IOComponent.hpp" />
+    <ClInclude Include="IOManager.hpp" />
+    <ClInclude Include="ISerializable.hpp" />
+    <ClInclude Include="JSON.hpp" />
+    <ClInclude Include="Lanes.hpp" />
+    <ClInclude Include="LaserWeapon.hpp" />
+    <ClInclude Include="LaunchGame.hpp" />
+    <ClInclude Include="LinearMeter.hpp" />
+    <ClInclude Include="Loot.hpp" />
+    <ClInclude Include="Message.hpp" />
+    <ClInclude Include="Mind.hpp" />
+    <ClInclude Include="Minimap.hpp" />
+    <ClInclude Include="Missile.hpp" />
+    <ClInclude Include="MissileWeapon.hpp" />
+    <ClInclude Include="Module.hpp" />
+    <ClInclude Include="ModuleParent.hpp" />
+    <ClInclude Include="Money.hpp" />
+    <ClInclude Include="Network.hpp" />
+    <ClInclude Include="NetworkBoss.hpp" />
+    <ClInclude Include="NetworkComponent.hpp" />
+    <ClInclude Include="NetworkedSelection.hpp" />
+    <ClInclude Include="NetworkFactory.hpp" />
+    <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="NumericDisplay.hpp" />
+    <ClInclude Include="OddballFunctions.hpp" />
+    <ClInclude Include="Overlay.hpp" />
+    <ClInclude Include="Panel.hpp" />
+    <ClInclude Include="Particles.hpp" />
+    <ClInclude Include="Picture.hpp" />
+    <ClInclude Include="Plating.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="ProjectileMan.hpp" />
+    <ClInclude Include="ProjectileModule.hpp" />
+    <ClInclude Include="ProjectileWeaponBase.hpp" />
+    <ClInclude Include="Protocol.hpp" />
+    <ClInclude Include="QuadBatchContainer.hpp" />
+    <ClInclude Include="QuadComponent.hpp" />
+    <ClInclude Include="Radar.hpp" />
+    <ClInclude Include="Range.hpp" />
+    <ClInclude Include="RangeList.hpp" />
+    <ClInclude Include="RayCastCallback.hpp" />
+    <ClInclude Include="Reactor.hpp" />
+    <ClInclude Include="Relay.hpp" />
+    <ClInclude Include="Replicator.hpp" />
+    <ClInclude Include="Request.hpp" />
+    <ClInclude Include="Resources.hpp" />
+    <ClInclude Include="ReturnSelection.hpp" />
+    <ClInclude Include="Scoreboard.hpp" />
+    <ClInclude Include="SelectableItem.hpp" />
+    <ClInclude Include="Sensor.hpp" />
+    <ClInclude Include="Shaker.hpp" />
+    <ClInclude Include="Shield.hpp" />
+    <ClInclude Include="ShipAI.hpp" />
+    <ClInclude Include="ShipBuilder.hpp" />
+    <ClInclude Include="ShipModule.hpp" />
+    <ClInclude Include="ShipProfile.hpp" />
+    <ClInclude Include="SlaveLocator.hpp" />
+    <ClInclude Include="Sound.hpp" />
+    <ClInclude Include="SoundManager.hpp" />
+    <ClInclude Include="Spinner.hpp" />
+    <ClInclude Include="stdafx.hpp" />
+    <ClInclude Include="Stealth.hpp" />
+    <ClInclude Include="Store.hpp" />
+    <ClInclude Include="Team.hpp" />
+    <ClInclude Include="Teleporter.hpp" />
+    <ClInclude Include="TextureAllocator.hpp" />
+    <ClInclude Include="Thruster.hpp" />
+    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Tooltip.hpp" />
+    <ClInclude Include="TriggerSensor.hpp" />
+    <ClInclude Include="Turret.hpp" />
+    <ClInclude Include="UniversalContactListener.hpp" />
+    <ClInclude Include="Universe.hpp" />
+    <ClInclude Include="UpgradeType.hpp" />
+    <ClInclude Include="Weapon.hpp" />
+    <ClInclude Include="WidgetBase.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EBC213C7-7AE2-42A3-A4EA-184CD0674944}</ProjectGuid>
@@ -82,11 +336,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../GraphLib;../DebuggingLib;../JSON</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../GraphLib;../DebuggingLib;../JSON;..;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GraphLib.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GraphLib.lib;jsoncpp.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;tgui.lib;Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,13 +357,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../GraphLib;../DebuggingLib;../JSON</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../GraphLib;../DebuggingLib;../JSON;..;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GraphLib.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GraphLib.lib;jsoncpp.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;tgui.lib;Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

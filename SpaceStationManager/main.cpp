@@ -1,17 +1,32 @@
 #include "MemoryDump.hpp"
+#include "Globals.hpp"
+#include "OOCore.hpp"
 
+Game* getGame(Game* instance)
+{
+	static Game* inst;
 
-#include <iostream>
-using namespace std;
-
+	if(instance == nullptr)
+	{
+		return inst;
+	}
+	else
+	{
+		inst = instance;
+		return nullptr;
+	}
+}
 
 int main()
 {
 	SIMPLEOUTPUT("\n");
 	SIMPLEOUTPUT("Program Started.");
-
-	DEBUGOUTPUT("something happened");
-
+	{
+		sp<Game> game(new Game());
+		getGame(game.get());
+		game->initialize();
+		getGame()->run();
+	}
 	_CrtDumpMemoryLeaks();
 
 	SIMPLEOUTPUT("Program ended.");
