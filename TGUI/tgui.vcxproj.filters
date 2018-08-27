@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SpinButton.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="Tab.cpp" />
+    <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Transformable.cpp" />
+    <ClCompile Include="Widget.cpp" />
+    <ClCompile Include="AnimatedPicture.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Callback.cpp" />
+    <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="ChatBox.cpp" />
+    <ClCompile Include="Checkbox.cpp" />
+    <ClCompile Include="ChildWindow.cpp" />
+    <ClCompile Include="ClickableWidget.cpp" />
+    <ClCompile Include="Clipboard.cpp" />
+    <ClCompile Include="ComboBox.cpp" />
+    <ClCompile Include="ConfigFile.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="EditBox.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="Knob.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="ListBox.cpp" />
+    <ClCompile Include="LoadingBar.cpp" />
+    <ClCompile Include="MenuBar.cpp" />
+    <ClCompile Include="MessageBox.cpp" />
+    <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Picture.cpp" />
+    <ClCompile Include="RadioButton.cpp" />
+    <ClCompile Include="Scrollbar.cpp" />
+    <ClCompile Include="Slider.cpp" />
+    <ClCompile Include="Slider2d.cpp" />
+  </ItemGroup>
+</Project>
