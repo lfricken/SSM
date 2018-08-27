@@ -104,7 +104,7 @@ Resources JSON::get(const Json::Value& root, const String& fieldName, Resources 
 
 	Resources res;
 
-	for(int key = 0; key < root[fieldName].size(); ++key)
+	for(int key = 0; (unsigned)key < root[fieldName].size(); ++key)
 	{
 		if(!root[fieldName][key].isNull())
 		{

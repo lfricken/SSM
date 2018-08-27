@@ -16,6 +16,8 @@
 #include "Debugging.hpp"
 #include "Grid.hpp"
 
+#pragma warning( disable : 4800)
+
 InputConfig::InputConfig()
 {
 	/**MOVEMENT**/

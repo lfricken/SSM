@@ -1,4 +1,4 @@
 #include "OOCore.hpp"
 
-print Print;
-input Input;
+MATH_API print Print;
+MATH_API input Input;

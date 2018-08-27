@@ -270,41 +270,6 @@
       <Name>sfml-system</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ALCheck.cpp" />
-    <ClCompile Include="AlResource.cpp" />
-    <ClCompile Include="AudioDevice.cpp" />
-    <ClCompile Include="InputSoundFile.cpp" />
-    <ClCompile Include="Listener.cpp" />
-    <ClCompile Include="Music.cpp" />
-    <ClCompile Include="OutputSoundFile.cpp" />
-    <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="SoundBuffer.cpp" />
-    <ClCompile Include="SoundBufferRecorder.cpp" />
-    <ClCompile Include="SoundFileFactory.cpp" />
-    <ClCompile Include="SoundFileReaderFlac.cpp" />
-    <ClCompile Include="SoundFileReaderOgg.cpp" />
-    <ClCompile Include="SoundFileReaderWav.cpp" />
-    <ClCompile Include="SoundFileWriterFlac.cpp" />
-    <ClCompile Include="SoundFileWriterOgg.cpp" />
-    <ClCompile Include="SoundFileWriterWav.cpp" />
-    <ClCompile Include="SoundRecorder.cpp" />
-    <ClCompile Include="SoundSource.cpp" />
-    <ClCompile Include="SoundStream.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ALCheck.hpp" />
-    <ClInclude Include="AudioDevice.hpp" />
-    <ClInclude Include="SoundFileReaderFlac.hpp" />
-    <ClInclude Include="SoundFileReaderOgg.hpp" />
-    <ClInclude Include="SoundFileReaderWav.hpp" />
-    <ClInclude Include="SoundFileWriterFlac.hpp" />
-    <ClInclude Include="SoundFileWriterOgg.hpp" />
-    <ClInclude Include="SoundFileWriterWav.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SoundFileFactory.inl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

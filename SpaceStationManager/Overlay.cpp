@@ -114,7 +114,7 @@ void StoreLoader::loadJson(const Json::Value& root)
 		}
 	}
 
-	for(int i = 0; i < buttonList.size(); ++i)
+	for(int i = 0; (unsigned)i < buttonList.size(); ++i)
 	{
 		lockedButtons.push_back(i);
 	}

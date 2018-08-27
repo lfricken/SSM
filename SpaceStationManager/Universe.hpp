@@ -15,7 +15,6 @@
 #include "Clock.hpp"
 #include "Resources.hpp"
 #include "BuildBounds.hpp"
-#include "AINode.hpp"
 #include "Lanes.hpp"
 
 class BatchLayers;

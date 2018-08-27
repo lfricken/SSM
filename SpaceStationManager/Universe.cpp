@@ -598,7 +598,7 @@ Vec2 Universe::getLaneTarget(Team team, Lane lane, const Vec2& pos) const
 	//modify target index
 	if(index < 0)
 		index = 0;
-	else if(index >= points.size())
+	else if((unsigned)index >= points.size())
 		index = points.size() - 1;
 
 	return points[index];

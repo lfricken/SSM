@@ -100,7 +100,8 @@ public:
 		std::cout << o;
 		return std::cout;
 	}
-} extern Print;
+};
+MATH_API extern print Print;
 class MATH_API input
 {
 public:
@@ -110,7 +111,8 @@ public:
 		std::cin >> o;
 		return std::cin;
 	}
-} extern Input;
+};
+MATH_API extern input Input;
 
 
 

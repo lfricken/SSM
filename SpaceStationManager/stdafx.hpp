@@ -35,7 +35,7 @@
 
 #include <TGUI/TGUI.hpp>/**TGUI**/
 
-#include <Box2D/Box2D.h>/**BOX2D**/
+#include "Box2D/Box2D.h"/**BOX2D**/
 
 #include <JSON/json.h>/**JSON**/
 
