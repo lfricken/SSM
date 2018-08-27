@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,6 +24,7 @@
     <Platform>Win32</Platform>
     <ProjectName>sfml-network</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -55,27 +56,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-network.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-network-d-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-network.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-network-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-network.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-network-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-network.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-network-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
@@ -110,15 +111,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\Debug\sfml-system-d.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-network-d.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-network.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -138,7 +140,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";SFML_NETWORK_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";SFML_NETWORK_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -153,15 +156,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\Release\sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-network.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-network.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -181,7 +185,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";SFML_NETWORK_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";SFML_NETWORK_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -196,15 +201,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\MinSizeRel\sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-network.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-network.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -239,101 +245,21 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\RelWithDebInfo\sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;ws2_32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-network.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-network.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <CustomBuild Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Network/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Network\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Network/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Network\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Network/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Network\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Network/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Network/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Network\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\Export.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Ftp.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\Ftp.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Http.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\Http.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\IpAddress.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\IpAddress.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Packet.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\Packet.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Socket.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\Socket.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\SocketImpl.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\SocketHandle.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\SocketSelector.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\SocketSelector.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\TcpListener.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\TcpListener.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\TcpSocket.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\TcpSocket.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\UdpSocket.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Network\UdpSocket.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Win32\SocketImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Network\Win32\SocketImpl.hpp" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\dev\build\built\sfml\vs2015ce\Release\ZERO_CHECK.vcxproj">
       <Project>{05EC638D-71EE-3AB8-9004-18E7E5B05A86}</Project>
@@ -343,6 +269,33 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{0B07AC2D-C2BD-3A82-B577-3A93EF55EE05}</Project>
       <Name>sfml-system</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Export.hpp" />
+    <ClInclude Include="Ftp.hpp" />
+    <ClInclude Include="Http.hpp" />
+    <ClInclude Include="IpAddress.hpp" />
+    <ClInclude Include="Packet.hpp" />
+    <ClInclude Include="Socket.hpp" />
+    <ClInclude Include="SocketHandle.hpp" />
+    <ClInclude Include="SocketImpl.hpp" />
+    <ClInclude Include="SocketSelector.hpp" />
+    <ClInclude Include="TcpListener.hpp" />
+    <ClInclude Include="TcpSocket.hpp" />
+    <ClInclude Include="UdpSocket.hpp" />
+    <ClInclude Include="Win32\SocketImpl.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Ftp.cpp" />
+    <ClCompile Include="Http.cpp" />
+    <ClCompile Include="IpAddress.cpp" />
+    <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="Socket.cpp" />
+    <ClCompile Include="SocketSelector.cpp" />
+    <ClCompile Include="TcpListener.cpp" />
+    <ClCompile Include="TcpSocket.cpp" />
+    <ClCompile Include="UdpSocket.cpp" />
+    <ClCompile Include="Win32\SocketImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

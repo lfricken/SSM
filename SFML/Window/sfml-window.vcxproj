@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,6 +24,7 @@
     <Platform>Win32</Platform>
     <ProjectName>sfml-window</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -55,27 +56,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-window.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-window-d-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-window.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-window-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-window.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-window-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-window.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-window-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
@@ -110,15 +111,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\Debug\sfml-system-d.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-window-d.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-window.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -138,7 +140,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR="Release";SFML_WINDOW_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\";SFML_WINDOW_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -153,15 +156,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\Release\sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-window.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-window.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -181,7 +185,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR="MinSizeRel";SFML_WINDOW_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;CMAKE_INTDIR=\"MinSizeRel\";SFML_WINDOW_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -196,15 +201,16 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\MinSizeRel\sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-window.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-window.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -239,126 +245,21 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\lib\RelWithDebInfo\sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system.lib;winmm.lib;gdi32.lib;opengl32.lib;kernel32.lib;user32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-window.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-window.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <CustomBuild Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Window/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Window/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Window/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/Window/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/Window/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Context.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Context.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Export.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\GlContext.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\GlContext.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\GlResource.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\GlResource.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\ContextSettings.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Event.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\InputImpl.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Joystick.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Joystick.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\JoystickImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\JoystickManager.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\JoystickManager.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Keyboard.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Keyboard.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Mouse.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Mouse.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Touch.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Touch.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Sensor.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Sensor.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\SensorImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\SensorManager.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\SensorManager.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\VideoMode.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\VideoMode.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\VideoModeImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Window.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\Window.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\WindowHandle.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\WindowImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\WindowImpl.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Window\WindowStyle.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WglContext.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WglContext.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WglExtensions.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WglExtensions.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\InputImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\InputImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\JoystickImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\JoystickImpl.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\SensorImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\SensorImpl.cpp"  />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\VideoModeImpl.cpp"  />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WindowImplWin32.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Window\Win32\WindowImplWin32.hpp" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\dev\build\built\sfml\vs2015ce\Release\ZERO_CHECK.vcxproj">
       <Project>{05EC638D-71EE-3AB8-9004-18E7E5B05A86}</Project>
@@ -368,6 +269,58 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{0B07AC2D-C2BD-3A82-B577-3A93EF55EE05}</Project>
       <Name>sfml-system</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Context.cpp" />
+    <ClCompile Include="GlContext.cpp" />
+    <ClCompile Include="GlResource.cpp" />
+    <ClCompile Include="Joystick.cpp" />
+    <ClCompile Include="JoystickManager.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Sensor.cpp" />
+    <ClCompile Include="SensorManager.cpp" />
+    <ClCompile Include="Touch.cpp" />
+    <ClCompile Include="VideoMode.cpp" />
+    <ClCompile Include="Win32\InputImpl.cpp" />
+    <ClCompile Include="Win32\JoystickImpl.cpp" />
+    <ClCompile Include="Win32\SensorImpl.cpp" />
+    <ClCompile Include="Win32\VideoModeImpl.cpp" />
+    <ClCompile Include="Win32\WglContext.cpp" />
+    <ClCompile Include="Win32\WglExtensions.cpp" />
+    <ClCompile Include="Win32\WindowImplWin32.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Context.hpp" />
+    <ClInclude Include="ContextSettings.hpp" />
+    <ClInclude Include="Event.hpp" />
+    <ClInclude Include="Export.hpp" />
+    <ClInclude Include="GlContext.hpp" />
+    <ClInclude Include="GlResource.hpp" />
+    <ClInclude Include="InputImpl.hpp" />
+    <ClInclude Include="Joystick.hpp" />
+    <ClInclude Include="JoystickImpl.hpp" />
+    <ClInclude Include="JoystickManager.hpp" />
+    <ClInclude Include="Keyboard.hpp" />
+    <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="Sensor.hpp" />
+    <ClInclude Include="SensorImpl.hpp" />
+    <ClInclude Include="SensorManager.hpp" />
+    <ClInclude Include="Touch.hpp" />
+    <ClInclude Include="VideoMode.hpp" />
+    <ClInclude Include="VideoModeImpl.hpp" />
+    <ClInclude Include="Win32\InputImpl.hpp" />
+    <ClInclude Include="Win32\JoystickImpl.hpp" />
+    <ClInclude Include="Win32\SensorImpl.hpp" />
+    <ClInclude Include="Win32\WglContext.hpp" />
+    <ClInclude Include="Win32\WglExtensions.hpp" />
+    <ClInclude Include="Win32\WindowImplWin32.hpp" />
+    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="WindowHandle.hpp" />
+    <ClInclude Include="WindowImpl.hpp" />
+    <ClInclude Include="WindowStyle.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

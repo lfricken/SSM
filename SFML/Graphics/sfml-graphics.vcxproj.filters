@@ -1,127 +1,76 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\BlendMode.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Color.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Font.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Glsl.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLCheck.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLExtensions.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Image.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\ImageLoader.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderStates.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTexture.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTarget.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderWindow.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Shader.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Texture.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\TextureSaver.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Transform.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Transformable.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\View.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Vertex.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLLoader.cpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Shape.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\CircleShape.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RectangleShape.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\ConvexShape.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Sprite.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\Text.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\VertexArray.cpp">
-      <Filter>drawables</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImpl.cpp">
-      <Filter>render texture</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImplFBO.cpp">
-      <Filter>render texture</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImplDefault.cpp">
-      <Filter>render texture</Filter>
-    </ClCompile>
+    <ClInclude Include="RenderTextureImplFBO.hpp" />
+    <ClInclude Include="RenderWindow.hpp" />
+    <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="Shape.hpp" />
+    <ClInclude Include="Sprite.hpp" />
+    <ClInclude Include="Text.hpp" />
+    <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="TextureSaver.hpp" />
+    <ClInclude Include="Transform.hpp" />
+    <ClInclude Include="Transformable.hpp" />
+    <ClInclude Include="Vertex.hpp" />
+    <ClInclude Include="VertexArray.hpp" />
+    <ClInclude Include="View.hpp" />
+    <ClInclude Include="BlendMode.hpp" />
+    <ClInclude Include="CircleShape.hpp" />
+    <ClInclude Include="Color.hpp" />
+    <ClInclude Include="ConvexShape.hpp" />
+    <ClInclude Include="Drawable.hpp" />
+    <ClInclude Include="Export.hpp" />
+    <ClInclude Include="Font.hpp" />
+    <ClInclude Include="GLCheck.hpp" />
+    <ClInclude Include="GLExtensions.hpp" />
+    <ClInclude Include="GLLoader.hpp" />
+    <ClInclude Include="Glsl.hpp" />
+    <ClInclude Include="Glyph.hpp" />
+    <ClInclude Include="Image.hpp" />
+    <ClInclude Include="ImageLoader.hpp" />
+    <ClInclude Include="PrimitiveType.hpp" />
+    <ClInclude Include="Rect.hpp" />
+    <ClInclude Include="RectangleShape.hpp" />
+    <ClInclude Include="RenderStates.hpp" />
+    <ClInclude Include="RenderTarget.hpp" />
+    <ClInclude Include="RenderTexture.hpp" />
+    <ClInclude Include="RenderTextureImpl.hpp" />
+    <ClInclude Include="RenderTextureImplDefault.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\BlendMode.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Color.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Export.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Font.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Glsl.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Glsl.inl" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Glyph.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLCheck.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLExtensions.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Image.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\ImageLoader.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\PrimitiveType.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Rect.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Rect.inl" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\RenderStates.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\RenderTexture.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\RenderTarget.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\RenderWindow.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Shader.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Texture.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\TextureSaver.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Transform.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Transformable.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\View.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Vertex.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\GLLoader.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Drawable.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Shape.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\CircleShape.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\RectangleShape.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\ConvexShape.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Sprite.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\Text.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\Graphics\VertexArray.hpp">
-      <Filter>drawables</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImpl.hpp">
-      <Filter>render texture</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImplFBO.hpp">
-      <Filter>render texture</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\RenderTextureImplDefault.hpp">
-      <Filter>render texture</Filter>
-    </ClInclude>
+    <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureSaver.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Transformable.cpp" />
+    <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
+    <ClCompile Include="View.cpp" />
+    <ClCompile Include="BlendMode.cpp" />
+    <ClCompile Include="CircleShape.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="ConvexShape.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="GLCheck.cpp" />
+    <ClCompile Include="GLExtensions.cpp" />
+    <ClCompile Include="GLLoader.cpp" />
+    <ClCompile Include="Glsl.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
+    <ClCompile Include="RectangleShape.cpp" />
+    <ClCompile Include="RenderStates.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="RenderTexture.cpp" />
+    <ClCompile Include="RenderTextureImpl.cpp" />
+    <ClCompile Include="RenderTextureImplDefault.cpp" />
+    <ClCompile Include="RenderTextureImplFBO.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\Graphics\CMakeLists.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="drawables">
-      <UniqueIdentifier>{75998AF7-488A-3C90-9CFF-8162FD730F1D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="render texture">
-      <UniqueIdentifier>{71405D89-7DE1-3A4E-9DB9-5D510D75EDA4}</UniqueIdentifier>
-    </Filter>
+    <None Include="Glsl.inl" />
+    <None Include="Rect.inl" />
   </ItemGroup>
 </Project>

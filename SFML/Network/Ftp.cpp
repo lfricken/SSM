@@ -35,6 +35,7 @@
 #include <sstream>
 #include <cstdio>
 
+#pragma warning( disable : 4244)
 
 namespace sf
 {

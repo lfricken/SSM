@@ -30,6 +30,7 @@
 #include <SFML/System/Err.hpp>
 #include <cassert>
 
+#pragma warning( disable : 4244)
 
 namespace
 {

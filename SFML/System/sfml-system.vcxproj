@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,6 +24,7 @@
     <Platform>Win32</Platform>
     <ProjectName>sfml-system</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -55,34 +56,34 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-system.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">sfml-system-d-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-system.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">sfml-system-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-system.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">sfml-system-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\lib\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-system.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">sfml-system-2</TargetName>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -111,14 +112,15 @@
     </Midl>
     <Link>
       <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-system-d.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Debug/sfml-system.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -126,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -138,7 +140,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release";SFML_SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";SFML_SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -154,14 +157,15 @@
     </Midl>
     <Link>
       <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-system.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/Release/sfml-system.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -169,7 +173,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -181,7 +185,8 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";SFML_SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";SFML_SYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -197,14 +202,15 @@
     </Midl>
     <Link>
       <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-system.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/MinSizeRel/sfml-system.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -212,7 +218,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -240,128 +246,77 @@
     </Midl>
     <Link>
       <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-system.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/dev/build/built/sfml/vs2015ce/Release/lib/RelWithDebInfo/sfml-system.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/System/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\System\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/System/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\System\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/System/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\System\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0 -BC:/dev/build/built/sfml/vs2015ce/Release --check-stamp-file C:/dev/build/built/sfml/vs2015ce/Release/src/SFML/System/CMakeFiles/generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/leon/Desktop/projects/StellarReaction/libsrc/SFML-2.4.0-sources/SFML-2.4.0/src/SFML/System/CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\dev\build\built\sfml\vs2015ce\Release\src\SFML\System\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Clock.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Clock.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Err.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Err.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Export.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\InputStream.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Lock.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Lock.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Mutex.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Mutex.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\NativeActivity.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\NonCopyable.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Sleep.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Sleep.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\String.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\String.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\String.inl" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Thread.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Thread.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Thread.inl" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\ThreadLocal.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\ThreadLocal.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\ThreadLocalPtr.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\ThreadLocalPtr.inl" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Time.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Time.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Utf.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Utf.inl" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Vector2.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Vector2.inl" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Vector3.hpp" />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\Vector3.inl" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\FileInputStream.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\FileInputStream.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\MemoryInputStream.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\include\SFML\System\MemoryInputStream.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ClockImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ClockImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\MutexImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\MutexImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\SleepImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\SleepImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ThreadImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ThreadImpl.hpp" />
-    <ClCompile Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ThreadLocalImpl.cpp"  />
-    <ClInclude Include="C:\Users\leon\Desktop\projects\StellarReaction\libsrc\SFML-2.4.0-sources\SFML-2.4.0\src\SFML\System\Win32\ThreadLocalImpl.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="C:\dev\build\built\sfml\vs2015ce\Release\ZERO_CHECK.vcxproj">
       <Project>{05EC638D-71EE-3AB8-9004-18E7E5B05A86}</Project>
       <Name>ZERO_CHECK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Err.cpp" />
+    <ClCompile Include="FileInputStream.cpp" />
+    <ClCompile Include="Lock.cpp" />
+    <ClCompile Include="MemoryInputStream.cpp" />
+    <ClCompile Include="Mutex.cpp" />
+    <ClCompile Include="Sleep.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="ThreadLocal.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Win32\ClockImpl.cpp" />
+    <ClCompile Include="Win32\MutexImpl.cpp" />
+    <ClCompile Include="Win32\SleepImpl.cpp" />
+    <ClCompile Include="Win32\ThreadImpl.cpp" />
+    <ClCompile Include="Win32\ThreadLocalImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Clock.hpp" />
+    <ClInclude Include="Err.hpp" />
+    <ClInclude Include="Export.hpp" />
+    <ClInclude Include="FileInputStream.hpp" />
+    <ClInclude Include="InputStream.hpp" />
+    <ClInclude Include="Lock.hpp" />
+    <ClInclude Include="MemoryInputStream.hpp" />
+    <ClInclude Include="Mutex.hpp" />
+    <ClInclude Include="NativeActivity.hpp" />
+    <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="Sleep.hpp" />
+    <ClInclude Include="String.hpp" />
+    <ClInclude Include="Thread.hpp" />
+    <ClInclude Include="ThreadLocal.hpp" />
+    <ClInclude Include="ThreadLocalPtr.hpp" />
+    <ClInclude Include="Time.hpp" />
+    <ClInclude Include="Utf.hpp" />
+    <ClInclude Include="Vector2.hpp" />
+    <ClInclude Include="Vector3.hpp" />
+    <ClInclude Include="Win32\ClockImpl.hpp" />
+    <ClInclude Include="Win32\MutexImpl.hpp" />
+    <ClInclude Include="Win32\SleepImpl.hpp" />
+    <ClInclude Include="Win32\ThreadImpl.hpp" />
+    <ClInclude Include="Win32\ThreadLocalImpl.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="String.inl" />
+    <None Include="Thread.inl" />
+    <None Include="ThreadLocalPtr.inl" />
+    <None Include="Utf.inl" />
+    <None Include="Vector2.inl" />
+    <None Include="Vector3.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

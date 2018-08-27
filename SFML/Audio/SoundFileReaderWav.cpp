@@ -32,6 +32,7 @@
 #include <cctype>
 #include <cassert>
 
+#pragma warning( disable : 4018)
 
 namespace
 {

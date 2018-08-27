@@ -1,3 +1,6 @@
+
+#pragma warning( disable : 4800)
+
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
