@@ -59,8 +59,6 @@ public:
 	SoundManager& getSound();
 	/// Return DragUpdater.
 	leon::DragUpdater& getDragUpdater();
-	/// Return Scoreboard.
-	Scoreboard& getScoreboard();
 	/// Return SFML View that renders to the standard Window coordinates.
 	sf::View& getStaticView();
 	/// Return Universe.
@@ -140,8 +138,6 @@ private:
 	sptr<IOComponent> m_spIO;	
 	/// Directory handler
 	sptr<const Directory> m_spDir;
-	/// Score board. TODO this should be in Universe.
-	sptr<Scoreboard> m_spScoreboard;
 	/// Used for a few calculations.
 	const float m_estimatedFrameTime = (1.f / 60.f);
 	/// Places limit on max FPS.

@@ -1,0 +1,9 @@
+{
+    "ClassName": "TurretData",
+    "startWep": "GrappleWeapon",
+	"controlGroup": 4,
+    "baseDecor": {
+        "texName": "module/turret/turret_base"
+    },
+	"cost": 200
+}

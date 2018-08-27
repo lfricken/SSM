@@ -1,43 +1,20 @@
 #include "Universe.hpp"
 #include "BlueprintLoader.hpp"
 #include "Globals.hpp"
-#include "SlaveLocator.hpp"
 #include "BatchLayers.hpp"
 #include "GraphicsComponentUpdater.hpp"
 #include "IOManager.hpp"
 #include "Player.hpp"
 #include "QuadComponent.hpp"
-#include "Chunk.hpp"
-#include "Chunk.hpp"
-#include "ShipModule.hpp"
-#include "Sensor.hpp"
-#include "Thruster.hpp"
-#include "Reactor.hpp"
-#include "Capacitor.hpp"
-#include "Turret.hpp"
-#include "LaserWeapon.hpp"
 #include "LinearMeter.hpp"
-#include "BallisticWeapon.hpp"
-#include "ProjectileMan.hpp"
 #include "Convert.hpp"
 #include "DecorationEngine.hpp"
-#include "CaptureArea.hpp"
-#include "UpgradeType.hpp"
 #include "Overlay.hpp"
-#include "Plating.hpp"
 
 
 
 void Universe::loadLevel(const GameLaunchData& data)//loads a level using blueprints
 {
-
-	for(int i = (int)Team::MinTeam + 1; i < (int)Team::MaxTeam; ++i) // initialize team resources
-	{
-		m_teamResources[(Team)i] = Resources();
-		m_teamResources[(Team)i].m_resourceValues[Resources::Matter] = 30;
-	}
-
-	ShipBuilder::resetSlaveName();
 	m_spControlFactory.reset(new ControlFactory);//remove all controllers.
 
 	loadBlueprints("blueprints/");
@@ -60,131 +37,12 @@ void Universe::loadLevel(const GameLaunchData& data)//loads a level using bluepr
 	}
 	else
 	{
-		/**Additional Map Blueprints**/
-		if(!root["AdditionalBlueprints"].isNull())
-		{
-			const Json::Value bpList = root["AdditionalBlueprints"];
-			for(auto it = bpList.begin(); it != bpList.end(); ++it)
-			{
-				m_spBPLoader->loadBlueprints(thisLevelFolder + it->asString());
-			}
-		}
-		/**Map Bounds*/
-		GETJSON(m_bounds);
-		GETJSON(m_lanes);
-
-		if(!root["BuildBounds"].isNull())
-		{
-			String ChunkName;
-			const Json::Value typeList = root["BuildBounds"];
-			for(auto it = typeList.begin(); it != typeList.end(); ++it)
-			{
-				String ChunkName = (*it)[NAMEOF(ChunkName)].asString();
-				const Json::Value boundList = (*it)["BoundList"];
-				for(auto bound = boundList.begin(); bound != boundList.end(); ++bound)
-				{
-					BuildBounds bounds;
-					bounds.center.x = (*bound)["center"][0].asFloat();
-					bounds.center.y = (*bound)["center"][1].asFloat();
-					bounds.radius = (*bound)["radius"].asFloat();
-					m_buildBounds[ChunkName].push_back(bounds);
-				}
-			}
-		}
-
-		/**Spawn Points**/
-		if(!root["SpawnPoints"].isNull())
-		{
-			const Json::Value spawnList = root["SpawnPoints"];
-			for(auto it = spawnList.begin(); it != spawnList.end(); ++it)
-			{
-				const Json::Value pointsJson = (*it)["Points"];
-				List<Vec2> points;
-				for(auto itPoint = pointsJson.begin(); itPoint != pointsJson.end(); ++itPoint)
-				{
-					points.push_back(Vec2((*itPoint)[0].asFloat(), (*itPoint)[1].asFloat()));
-				}
-				m_spawnPoints[(Team)(*it)["Team"].asInt()] = points;
-			}
-		}
-
-		/**Create player ships**/
-		for(auto it = data.playerList.cbegin(); it != data.playerList.cend(); ++it)
-		{
-			int num = it - data.playerList.cbegin();
-			Vec2 spawn = m_spawnPoints[it->team][num];
-			float angle = Math::toDeg(atan2(spawn.y, spawn.x) + (Math::Pi / 2.f));
-
-			ChunkDataMessage chunkMessageData;
-
-			chunkMessageData.blueprintName = it->ship;
-			chunkMessageData.coordinates = spawn;
-			chunkMessageData.rotation = angle;
-			chunkMessageData.team = (int)it->team;
-			chunkMessageData.needsController = true;
-			chunkMessageData.aiControlled = false;
-
-			ShipBuilder::Server::createChunk(chunkMessageData, 0);
-		}
-
 		/**Load Local Player Overlay**/
 		getGame()->getLocalPlayer().loadOverlay("overlayconfig");
 
 		/**Set Local Controller**/
 		getGame()->getLocalPlayer().setController(data.localController);
 
-		/**Hazard Field Spawn Hazards**/
-		//for(auto it = hazardFields.begin(); it != hazardFields.end(); ++it)
-		//	(**it).spawn();
-
-		/**Map Chunks**/
-		if(!root["Chunks"].isNull())
-		{
-			const Json::Value chunks = root["Chunks"];
-			for(auto it = chunks.begin(); it != chunks.end(); ++it)
-			{
-				ChunkDataMessage chunkMessageData;
-				chunkMessageData.loadJson(*it);
-
-				ShipBuilder::Server::createChunk(chunkMessageData, 0);
-			}
-		}
-		const String Custom = "Custom";
-		if(!root[Custom].isNull())
-		{
-			const String fixtureBpNameRoot = Custom;
-			const String chunkBpNameRoot = Custom;
-			const Json::Value custom = root[Custom];
-
-			int index = 0;
-			for(auto it = custom.begin(); it != custom.end(); ++it)
-			{
-				const String fixtureBpName = fixtureBpNameRoot + String(index);
-				const String chunkBpName = chunkBpNameRoot + String(index);
-
-				auto fixtureBp = sptr<PlatingData>(static_cast<PlatingData*>(getBlueprints().getModuleSPtr(fixtureBpNameRoot)->clone()));
-				auto chunkBp = sptr<ChunkData>(static_cast<ChunkData*>(getBlueprints().getChunkSPtr(chunkBpNameRoot)->clone()));
-
-				fixtureBp->fixComp.vertices = JSON::get(*it, "vertices", fixtureBp->fixComp.vertices);
-				chunkBp->moduleData.push_back(Pair<String, Vec2>(fixtureBpName, Vec2(0, 0)));
-
-				getBlueprints().addBp(fixtureBpName, fixtureBp);
-				getBlueprints().addBp(chunkBpName, chunkBp);
-
-				ChunkDataMessage chunkMessageData;
-				chunkMessageData.blueprintName = chunkBpName;
-				ShipBuilder::Server::createChunk(chunkMessageData, 0);
-
-				++index;
-			}
-		}
-		/**Hazard Fields**/
-		if(!root["Spawners"].isNull())
-		{
-			const Json::Value spawnList = root["Spawners"];
-			for(auto it = spawnList.begin(); it != spawnList.end(); ++it)
-				hazardFields.push_back(sptr<ChunkSpawner>(new ChunkSpawner(this, *it)));
-		}
 		/**Decorations**/
 		DecorationEngine& decorations = *m_spDecorEngine;
 		LOADJSON(decorations);

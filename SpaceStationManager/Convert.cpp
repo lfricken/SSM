@@ -1,7 +1,6 @@
 #include "Convert.hpp"
 
-const int Convert::scale = 512;
-const int Convert::standardModuleSize = 256;
-const float Convert::universeToWorldFactor = static_cast<float>(Convert::standardModuleSize) / static_cast<float>(scale);
-const float pi = 3.14159f;
+const int Convert::screenToUniverseRatio = 64;
+const float Convert::universeToScreenRatio = static_cast<float>(1.f) / static_cast<float>(screenToUniverseRatio);
+
 

@@ -1,0 +1,23 @@
+{
+    "ClassName": "ChunkData",
+    "bodyComp": {
+        "rotation": 0,
+        "isDynamic": false
+    },
+	"hullSpriteData": {
+		"dimensions": [15240, 9000],
+		"center": [0,0],
+		"texName": "hulls/store",
+		"animSheetName": "hulls/store.acfg",
+		"layer": "ShipUnder"
+	},
+    "moduleData": [
+        {
+            "title": "Store",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

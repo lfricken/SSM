@@ -1,0 +1,25 @@
+{
+    "ClassName": "ChunkData",
+	"cost": [3, 3, 0],
+    "zoomData": {
+        "Max": 64,
+        "Value": 16
+    },
+    "energyData": {
+        "Max": 50
+    },
+	"hullSpriteData": {
+		"dimensions": [768, 768],
+		"texName": "hulls/Mind",
+		"layer": "ShipHull"
+	},
+    "moduleData": [
+        {
+            "title": "Mind",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

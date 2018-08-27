@@ -1,0 +1,120 @@
+{
+    "ClassName": "CaptureGraphicData",
+    "baseDecor": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/capturePoint",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "BackgroundClose",
+		"rate": 10,
+		"randomRot": false
+    },
+	"whiteLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/white",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+	"blueLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/blue",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+	"greenLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/green",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+	"yellowLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/yellow",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+	"pinkLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/pink",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+	"redLights": {
+        "dimensions": [
+            10240,
+            10240
+        ],
+        "permanentRot": 30,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/capture/red",
+        "animSheetName": "backgrounds/capture/capturePoint.acfg",
+        "layer": "ShipHull",
+		"rate": 10,
+		"randomRot": false
+    },
+    "fixComp": {
+		"mass": 0,
+		"colCat": "None",
+		"colMask": "None"	
+	}
+}

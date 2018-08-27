@@ -1,0 +1,16 @@
+{
+    "ClassName": "ChunkData",
+    "bodyComp": {
+        "rotation": 0,
+        "isDynamic": false
+    },
+	"hullSpriteData": {
+		"dimensions": [9720, 15318],
+		"center": [0,0],
+		"texName": "battlestations/green1",
+		"animSheetName": "battlestations/green1.acfg",
+		"layer": "ShipHull"
+	},
+    "moduleData": [
+    ]
+}

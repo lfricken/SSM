@@ -1,0 +1,14 @@
+{
+    "ClassName": "PlatingData",
+	"baseDecor": {
+		"texName": "module/plating"
+	},
+	"health": {
+		"Armor": 3
+	},
+	"cost": [
+		2,
+		4,
+		0
+	]
+}

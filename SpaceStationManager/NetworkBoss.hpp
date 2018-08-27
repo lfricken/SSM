@@ -7,7 +7,6 @@
 #include "IOComponent.hpp"
 #include "NetworkFactory.hpp"
 #include "NonCopyable.hpp"
-#include "ShipBuilder.hpp"
 
 class PlayerState;
 

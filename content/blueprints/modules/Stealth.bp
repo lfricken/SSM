@@ -1,0 +1,8 @@
+{
+    "ClassName": "StealthData",
+  	"energyConsumption": 20,
+	"baseDecor": {
+		"module": "stealth/stealth"
+	},
+	"cost": 100
+}

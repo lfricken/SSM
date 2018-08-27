@@ -1,0 +1,19 @@
+{
+    "ClassName": "ThrusterData",
+	"Name": "Robodine 10-X",
+	"force": 100,
+	"torque": 60,
+	"boostCostMult": 20,
+	"boostThrustMult": 2.5,
+	"energyConsumption": 1,
+    "baseDecor": {
+        "texName": "module/thruster"
+    },
+	"rangeModifiers": {
+		"TeleportRange": {
+			"Max": 100,
+			"Value": 60
+		}
+	},
+	"cost": 150
+}

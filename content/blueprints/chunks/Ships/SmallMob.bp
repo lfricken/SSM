@@ -1,0 +1,59 @@
+{
+    "ClassName": "ChunkData",
+    "zoomData": {
+        "Max": 64,
+        "Value": 16
+    },
+    "energyData": {
+        "Max": 50
+    },
+	"hullSpriteData": {
+		"dimensions": [1350, 1740],
+		"center": [0, 0],
+		"texName": "hulls/bluefighter",
+		"layer": "ShipHull"
+	},
+	"afterburnerSpriteData": [
+		{
+			"dimensions": [200, 600],
+			"center": [0, 600],
+			"texName": "effects/thrust",
+			"animSheetName": "effects/thrust.acfg",
+			"layer": "ShipModules",
+			"permanentRot": -2
+		}
+	],
+	"afterburnerThrustSpriteData": [
+		{
+			"dimensions": [200, 1400],
+			"center": [0, 600],
+			"texName": "effects/boost",
+			"animSheetName": "effects/boost.acfg",
+			"layer": "ShipModules",
+			"permanentRot": -2
+		}
+	],
+    "moduleData": [
+        {
+            "title": "Reactor_mob",
+            "Position": [
+                0,
+                1
+            ]
+        },
+        {
+            "title": "LaserWeapon_mob",
+            "Position": [
+                0,
+                0
+            ]
+        },
+        {
+            "title": "Thruster_mob",
+            "Position": [
+                0,
+                -1
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "ClassName": "BallisticWeaponData",
+	"projName": "Ballistic",
+	"energyConsumption": 1,
+	"fireDelay": 0.1,
+    "damage": 6,
+	"velocity": 100,
+	
+    "shots": 1,
+	"shotDelay": 0,
+	"fireArc": 2,
+	
+	"range": 100,
+	
+	"shotSound": {
+        "name": "BallisticShot.wav"
+    }
+}

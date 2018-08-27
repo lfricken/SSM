@@ -2,20 +2,12 @@
 
 #include "stdafx.hpp"
 #include "IOComponent.hpp"
-#include "UniversalContactListener.hpp"
-#include "DebugDraw.hpp"
 #include "ControlFactory.hpp"
-#include "Money.hpp"
-#include "Scoreboard.hpp"
-#include "ChunkSpawner.hpp"
-#include "ShipAI.hpp"
 #include "LaunchGame.hpp"
 #include "NonCopyable.hpp"
 #include "Team.hpp"
 #include "Clock.hpp"
 #include "Resources.hpp"
-#include "BuildBounds.hpp"
-#include "Lanes.hpp"
 
 class BatchLayers;
 class GraphicsComponentUpdater;
@@ -53,14 +45,8 @@ public:
 	ProjectileMan& getProjMan();
 	/// Return the DecorationEngine for this Universe.
 	DecorationEngine& getDecors();
-	Factory<Chunk>& Universe::getChunks();
-	Factory<ShipAI>& getShipAI();
-	/// Return the Box2D world for this Universe.
-	b2World& getWorld();
 	/// Return the BlueprintLoader for this Universe.
 	BlueprintLoader& getBlueprints();
-	/// Return the Scoreboard for this Universe.
-	Scoreboard& getScoreboard();
 	/// Return the bounds of this Universe.
 	const Vec2& getBounds() const;
 	/// Set the bounds of the Universe. Leaving bounds pushes you back to the getGame()->
@@ -130,11 +116,8 @@ public:
 	const Resources& getTeamResources(Team team) const;
 	bool canBuildAtLocation(String chunkBPName, Vec2 pos) const;
 
-	Vec2 getLaneTarget(Team team, Lane lane, const Vec2& pos) const;
-
 protected:
 	bool listContains(std::list<Team> teams, Team value);
-	Chunk* gameObject(int index);
 	void loadBlueprints(const String& bluePrints);//loads blueprints
 	void input(String rCommand, sf::Packet rData);
 
@@ -142,16 +125,6 @@ private:
 	friend class NetworkBoss;
 	void pack(sf::Packet& data);
 	void unpack(sf::Packet& data);
-
-	Map<String, List<BuildBounds> > m_buildBounds;
-	/**Money**/
-	std::map<Team, Resources> m_teamResources;
-	std::map<Team, Resources> m_teamIncome;//how many resources does each team get per time
-
-	/// Change the Money a team gets each tick.
-	void changeTeamResources(Team team, Resources money);
-	void changeTeamIncome(Team team, Resources money);
-	/**Atomic Actions**/
 
 	/// <summary>
 	/// Create a controller, decide whether it's controlled by an AI, and give it a ship to control.
@@ -164,31 +137,6 @@ private:
 
 	sptr<NetworkComponent> m_nw;
 
-
-	/**SLEEP**/
-	List<Vec2> m_beds;
-	int m_inc;
-	Vec2 m_currentBed;
-	/**SLEEP**/
-
-	/**TIME**/
-	float m_realTime; // actual time since application start
-	float m_pauseTime; // when the last pause started
-	float m_skippedTime; // how much time has been skipped from being paused?
-	bool m_paused; // true if the universe is paused
-	/**TIME**/
-
-	/**PHYSICS**/
-	float m_timeStep;
-	int m_velocityIterations;
-	int m_positionIterations;
-
-	UniversalContactListener m_contactListener;
-	DebugDraw m_debugDraw;
-	b2World m_physWorld;
-	/**PHYSICS**/
-
-	sptr<Scoreboard> m_scoreboard;
 	sptr<ControlFactory> m_spControlFactory;
 	sptr<BlueprintLoader> m_spBPLoader;
 	//	sptr<SlaveLocator> m_spSlaveLocator;//list of all slaves
@@ -199,22 +147,9 @@ private:
 	sptr<DecorationEngine> m_spDecorEngine;//list of decorations for the world
 
 	std::map<Team, List<Vec2> > m_spawnPoints;//places for people to spawn, int is team
-
-	bool m_allModulesUnlocked;
-	bool m_restartedMoneyTimer;
-	sptr<Timer> m_spMoneyTimer;//how long to wait for each money gift
-
-	/**Ships, AI**/
-	Factory<Chunk> m_goList;// must be AFTER universe graphics//list of game objects that WE need to keep track of
-	Factory<ShipAI> m_shipAI;
-
-	List<List<Vec2> > m_lanes;
-
-	/**Hazards**/
-	List<sptr<ChunkSpawner> > hazardFields;
+	
 
 	IOComponent m_io;
 	float m_lastTime;//used for update method//cant use timer because timer references us!
 	bool m_debugDrawEnabled;
-	Vec2 m_bounds;
 };

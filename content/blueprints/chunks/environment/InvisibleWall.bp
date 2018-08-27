@@ -1,0 +1,24 @@
+{
+    "ClassName": "ChunkData",
+	"team": -1,
+    "bodyComp": {
+		"linearDampening": 0.0,
+		"angularDampening": 0.0,
+		"isDynamic": false
+    },
+	"hullSpriteData": {
+		"dimensions": [12800, 256],
+		"center": [0,0],
+		"texName": "old/default",
+		"layer": "ShipHull"
+	},
+    "moduleData": [
+        {
+            "title": "Wall",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

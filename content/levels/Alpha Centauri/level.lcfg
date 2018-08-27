@@ -1,0 +1,272 @@
+{
+	"Spawners": [{
+		"m_isEnabled": true,
+		"m_blueprints": ["SmallMob"],
+		"m_spawnAmount": -1,
+		"m_spawnPer": 3,
+		"m_spawnPeriod": 30,
+		"m_spawnPeriodVariance": 0,
+		"m_radius": 1,
+		"m_origin": [400, 400],
+		"m_chunkData": {
+			"team": 2,
+			"aiControlled": true
+		}
+	}],
+	"Custom": [{
+		"vertices": [
+			[0, 0],
+			[1, 1],
+			[1, 0],
+			[0, -2]
+		]
+	}],
+	"Chunks": [{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-75, -125, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-25, -125, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [25, -125, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [75, -125, 0],
+			"team": -1
+		},
+
+
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-75, -75, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-25, -75, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [25, -75, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [75, -75, 0],
+			"team": -1
+		},
+
+
+
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-75, -25, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [-25, -25, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [25, -25, 0],
+			"team": -1
+		},
+		{
+			"blueprintName": "InvisibleWall",
+			"coordinates": [75, -25, 0],
+			"team": -1
+		}
+
+
+
+	],
+	"m_lanes": [
+		[
+			[-300, 0],
+			[-200, 100],
+			[-100, 30],
+			[100, 100],
+			[200, 0],
+			[300, 80],
+			[400, 0]
+		],
+		[
+			[-50, 30],
+			[-40, 30],
+			[-30, 30],
+			[-20, 30],
+			[-10, 30]
+		],
+		[]
+	],
+	"SpawnPoints": [{
+		"Team": 1,
+		"Points": [
+			[-100, 0, 0],
+			[-100, 0, 0],
+			[-100, 0, 0],
+			[-100, 0, 0],
+			[-100, 0, 0]
+		]
+	}, {
+		"Team": 2,
+		"Points": [
+			[100, 0, 0],
+			[100, 0, 0],
+			[100, 0, 0],
+			[100, 0, 0],
+			[100, 0, 0]
+		]
+	}],
+	"BuildBounds": [{
+			"ChunkName": "Extractor",
+			"BoundList": [{
+				"center": [0, 0],
+				"radius": 5000
+			}]
+		},
+		{
+			"ChunkName": "Relay",
+			"BoundList": [{
+				"center": [0, 0],
+				"radius": 5000
+			}]
+		},
+		{
+			"ChunkName": "Hardpoint",
+			"BoundList": [{
+				"center": [0, 0],
+				"radius": 5000
+			}]
+		},
+		{
+			"ChunkName": "Mind",
+			"BoundList": [{
+				"center": [0, 0],
+				"radius": 5000
+			}]
+		},
+		{
+			"ChunkName": "Replicator",
+			"BoundList": [{
+				"center": [0, 0],
+				"radius": 5000
+			}]
+		}
+	],
+	"decorations": [{
+			"count": 1,
+			"quadData": {
+				"layer": "Back8",
+				"dimensions": [2400, 1200],
+				"texName": "backgrounds/bg6",
+				"animSheetName": "backgrounds/bg6.acfg"
+			},
+			"decorData": {
+				"infiniteZ": true,
+				"zPos": 0,
+				"realPosition": [0, 0]
+			}
+		},
+		{
+			"count": 1,
+			"quadData": {
+				"layer": "Back7",
+				"dimensions": [200, 200],
+				"texName": "planets/rocky",
+				"animSheetName": "planets/rocky.acfg"
+			},
+			"decorData": {
+				"zPos": 1024,
+				"realPosition": [300, 0]
+			}
+		},
+		{
+			"count": 1,
+			"quadData": {
+				"layer": "Back6",
+				"dimensions": [600, 600],
+				"texName": "planets/desert",
+				"animSheetName": "planets/desert.acfg"
+			},
+			"decorData": {
+				"zPos": 740,
+				"realPosition": [-300, 0]
+			}
+		},
+		{
+			"count": 9,
+			"quadData": {
+				"layer": "Back5",
+				"dimensions": [128, 128],
+				"texName": "backgrounds/debris/debris10",
+				"animSheetName": "backgrounds/debris/debris.acfg",
+				"color": [96, 96, 96, 255]
+			},
+			"decorData": {
+				"maxSpinRate": 5,
+				"minSpinRate": -10,
+				"maxVelocity": [4, 4],
+				"minVelocity": [-4, -4],
+
+				"zPos": 256,
+
+				"repeatsRandom": true,
+				"spawnRandom": true
+			}
+		},
+		{
+			"count": 9,
+			"quadData": {
+				"layer": "Back4",
+				"dimensions": [128, 128],
+				"texName": "backgrounds/debris/debris7",
+				"animSheetName": "backgrounds/debris/debris.acfg",
+				"color": [96, 96, 96, 255]
+			},
+			"decorData": {
+				"maxSpinRate": 10,
+				"minSpinRate": -20,
+				"maxVelocity": [2, 2],
+				"minVelocity": [-2, -2],
+
+				"zPos": 128,
+
+				"repeatsRandom": true,
+				"spawnRandom": true
+			}
+		},
+		{
+			"count": 9,
+			"quadData": {
+				"layer": "Back3",
+				"dimensions": [128, 128],
+				"texName": "backgrounds/debris/debris2",
+				"animSheetName": "backgrounds/debris/debris.acfg",
+				"color": [96, 96, 96, 255]
+			},
+			"decorData": {
+				"maxSpinRate": 10,
+				"minSpinRate": -10,
+				"maxVelocity": [2, 2],
+				"minVelocity": [-2, -2],
+
+				"zPos": 32,
+
+				"repeatsRandom": true,
+				"spawnRandom": true
+			}
+		}
+	],
+	"m_bounds": [1000, 1000]
+}

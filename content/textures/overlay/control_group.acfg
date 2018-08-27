@@ -1,0 +1,41 @@
+{
+    "texTileSize": [
+        119,
+        47
+    ],
+    "stateList": [
+        {
+            "state": "Default",
+            "repeats": false,
+            "tileList": [
+				{
+                    "x": 0,
+                    "y": 0,
+                    "t": 1
+                }
+            ]
+        },
+        {
+            "state": "Off",
+            "repeats": false,
+            "tileList": [
+                {
+                    "x": 1,
+                    "y": 0,
+                    "t": 1
+                }
+            ]
+        },
+        {
+            "state": "On",
+            "repeats": false,
+            "tileList": [
+				{
+                    "x": 0,
+                    "y": 0,
+                    "t": 1
+                }
+            ]
+        }
+    ]
+}

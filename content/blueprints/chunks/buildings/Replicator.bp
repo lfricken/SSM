@@ -1,0 +1,25 @@
+{
+    "ClassName": "ChunkData",
+	"cost": [23, 5, 0],
+    "zoomData": {
+        "Max": 64,
+        "Value": 16
+    },
+    "energyData": {
+        "Max": 50
+    },
+	"hullSpriteData": {
+		"dimensions": [768, 768],
+		"texName": "hulls/Replicator",
+		"layer": "ShipHull"
+	},
+    "moduleData": [
+        {
+            "title": "Replicator",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

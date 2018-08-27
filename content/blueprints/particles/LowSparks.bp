@@ -1,0 +1,24 @@
+{
+    "ClassName": "Particles",
+	"number": 20,
+	"randDuration": 0.1,
+	"duration": 0.1,
+	"fadeOutTime": 0.2,
+	"fadeInTime": 0,
+	"velocity": 12,
+	"randVelScalarMax": 2,
+	"randArc": 18,
+	"minSpinRate": 0,
+	"maxSpinRate": 0,
+	"quadData": {
+		"texName": "effects/spark",
+		"dimensions": [128, 128]
+	}
+}
+
+
+
+
+
+
+

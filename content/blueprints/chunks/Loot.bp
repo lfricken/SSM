@@ -1,0 +1,18 @@
+{
+    "ClassName": "ChunkData",
+	"hullSpriteData": {
+		"dimensions": [512, 512],
+		"center": [0, 0],
+		"texName": "hulls/loot",
+		"layer": "ShipHull"
+	},
+    "moduleData": [
+        {
+            "title": "LootModule",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

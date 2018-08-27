@@ -35,8 +35,6 @@
 
 #include <TGUI/TGUI.hpp>/**TGUI**/
 
-#include "Box2D/Box2D.h"/**BOX2D**/
-
 #include <JSON/json.h>/**JSON**/
 
 #include <Math/Math.hpp>/**LEON MATH**/
@@ -121,15 +119,6 @@ public:
 	//{
 	//	return Vec2(x,y);
 	//}
-	Vec2(const b2Vec2& cast)
-	{
-		x = cast.x;
-		y = cast.y;
-	}
-	operator b2Vec2() const
-	{
-		return b2Vec2(x, y);
-	}
 	///Cast for SFML
 	explicit Vec2(const sf::Vector2f& cast)
 	{

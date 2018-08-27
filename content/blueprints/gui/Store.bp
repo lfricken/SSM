@@ -1,0 +1,46 @@
+{
+	"buttonSize": [200, 40],
+	"previewWidth": 80,
+	"baseTransparency": 100,
+	"moduleSpawnPos": [-2, -3],
+
+	"buttonList": [
+	{
+		"previewTexture": "module/plating",
+		"cost": [10, 10, 0],
+		"moduleBlueprint": "Plating",
+		"buttonName": ""
+	},
+	{
+		"previewTexture": "module/radar",
+		"cost": [10, 0, 0],
+		"moduleBlueprint": "Radar",
+		"buttonName": ""
+	},
+	{
+		"previewTexture": "module/capacitor",
+		"cost": [10, 0, 0],
+		"moduleBlueprint": "Capacitor",
+		"buttonName": ""
+	},
+	{
+		"previewTexture": "module/reactor",
+		"cost": [10, 0, 0],
+		"moduleBlueprint": "Reactor",
+		"buttonName": ""
+	},
+	{
+		"previewTexture": "module/turret/ballistic_turret",
+		"cost": [10, 0, 0],
+		"moduleBlueprint": "BallisticWeapon",
+		"buttonName": ""
+	},
+	{
+		"previewTexture": "module/turret/gauss_rifle_turret",
+		"cost": [1, 0, 0],
+		"moduleBlueprint": "GaussRifleWeapon",
+		"buttonName": ""
+	}
+	
+	]
+}

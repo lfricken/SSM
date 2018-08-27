@@ -1,0 +1,53 @@
+{
+    "ClassName": "BlackHoleGraphicData",
+    "innerDecor": {
+        "dimensions": [
+            20480,
+            20480
+        ],
+        "permanentRot": 0,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/blackhole/black_hole_i",
+        "animSheetName": "backgrounds/blackhole/black_hole.acfg",
+        "layer": "BackgroundClose",
+		"rate": -440
+    },
+    "middleDecor": {
+        "dimensions": [
+            20480,
+            20480
+        ],
+        "permanentRot": 0,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/blackhole/black_hole_m",
+        "animSheetName": "backgrounds/blackhole/black_hole.acfg",
+        "layer": "BackgroundClose",
+		"rate": -180
+    },
+    "outerDecor": {
+        "dimensions": [
+            20480,
+            20480
+        ],
+        "permanentRot": 0,
+        "center": [
+            0,
+            0
+        ],
+        "texName": "backgrounds/blackhole/black_hole_o",
+        "animSheetName": "backgrounds/blackhole/black_hole.acfg",
+        "layer": "BackgroundClose",
+		"rate": -45
+    },
+    "fixComp": {
+		"mass": 0,
+		"colCat": "None",
+		"colMask": "None"	
+	}
+}

@@ -1,5 +1,4 @@
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#pragma once
 
 #include "stdafx.hpp"
 #include "Controller.hpp"
@@ -90,14 +89,6 @@ public:
 	Player(const PlayerData& rData);
 	virtual ~Player();
 
-	/// <summary>
-	/// Return ship for local player.
-	/// </summary>
-	Chunk* getChunk() const;
-	/// <summary>
-	/// Return controller for local player.
-	/// </summary>
-	Controller* getController() const;
 	/// Returns Camera for local player.
 	Camera& getCamera();
 	/// Returns keyboard input configuration.
@@ -113,95 +104,52 @@ public:
 	bool toggleFocus(bool isWindowFocused);
 	/// Does the Game have Window Focus?
 	bool hasFocus() const;
-	/// Is the players Camera tracking the players ship?
-	bool isTracking() const;
-	/// Set which controller this player controlls.
-	void setController(int index);
 
 	/// Return the position of the players cursor in window coordinates.
 	const sf::Vector2f& getMouseWindowPos() const;
 	/// Set the position of the players cursor in window coordinates.
 	void setMouseWindowPos(const sf::Vector2f& rPos);
-	/// Return the position of the cursor in world coordinates.
-	Vec2 getMouseInWorld();
 
 	/// Get direct feed from keyboard and mouse. Gets their states only, not events.
-	void getLiveInput();
+	void getLiveInput(Vec2 mouseScreenPosition);
 	/// Get events, such as keydown, keyup, mouse-button-down, mouse-button-up etc.
 	void getWindowEvents(sf::RenderWindow& rWindow);
 
-	/// Update HUD elements.
-	void updateView();
-	/// Initially load HUD elements.
-	void loadOverlay(const String& rOverlay);
-
-	/// Tells Player that the universe no longer exists.
-	/// This means the sprites for the HUD need to be destroyed if they existed in universe.
-	void onBeforeUniverseDestroyed();
-	void onUniverseCreated();
-	/// Set the state of a particular control group.
-	bool toggleControlGroup(int group, bool on);
-	/// Toggle the state of a control group.
-	bool toggleControlGroup(int group);
-	/// Number of items on radar.
-	int radarsize();
 	/// <summary>
-	/// Returns true if none of the resources will go negative.
+	/// TODO This does nothing!
 	/// </summary>
-	bool canChangeResources(const Resources& cost) const;
+	void updateView();
 
-	const Resources* Player::getResources() const;
 protected:
 	void input(String rCommand, sf::Packet rData);
 
 private:
-	void build(String bpName, Vec2 pos);
 
-	Timer m_resourceUpdateTimer;
-	
-	void selectTarget(const Vec2& targetNearPos, const Chunk* playersShip);
-	void createReticles();
-	bool hasTarget(int newTarget);
-
-	///Where we are aiming in world coordinates.
-	Vec2 m_aim;
-	sf::Vector2f m_mouseWindowPos;//where is the players mouse on the screen?
-	Map<Directive, bool> m_directives;//up, down, rollCW, roll CCW, ect.
-	Map<int, bool> m_weaponGroups;//group, is active
-
-	float m_desiredZoom;//for smooth zooming
-	Vec2 m_desiredCameraPos;//for smooth zooming
-
-	///TEMPORARY
-	sptr<QuadComponent> m_energyMeter;
-	sptr<QuadComponent> m_energyDanger;
-	sptr<QuadComponent> m_shieldState;
-	sptr<QuadComponent> m_boundsDanger;
-
-	int m_nextTarget;
-	int m_maxTargets;
-	List<int> m_targets;
-	List<sptr<leon::Grid> > m_targetBoards;
-	List<sptr<QuadComponent> > m_targetReticules;
+	sf::Vector2f m_mouseWindowPos; // where is the players mouse on the screen?
 
 	/// <summary>
-	/// What is this?
+	/// Controls zoom and where on the map is being displayed.
 	/// </summary>
-	List<sptr<QuadComponent>> m_groupIcon;
+	Camera m_camera;
 
-	sptr<LinearMeter> m_energyMeterFill;
-	sptr<Minimap> m_minimap;
-	sptr<leon::Grid> m_myStatusBoard;
+	/// <summary>
+	/// Keybindings
+	/// </summary>
+	InputConfig m_keyBindings;
 
-	Camera m_camera;//players camera
-	InputConfig m_inCfg;
-	bool m_inGuiMode;//true if we are in GUI mode
-	bool m_tracking;
+	/// <summary>
+	/// True if player click events can make it through to the grid.
+	/// </summary>
+	bool m_canInteractWithUniverse;
+
+	/// <summary>
+	/// True if the sfml window has focus.
+	/// </summary>
 	bool m_hasFocus;
 
-	int m_radarsize;
-
+	/// <summary>
+	/// Send messages to this player.
+	/// </summary>
 	IOComponent m_io;
 };
 
-#endif // PLAYER_HPP

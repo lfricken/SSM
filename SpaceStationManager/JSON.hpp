@@ -2,10 +2,8 @@
 
 #include "stdafx.hpp"
 #include "Team.hpp"
-#include "CollisionCategory.hpp"
 #include "Resources.hpp"
 #include "RangeList.hpp"
-#include "Lanes.hpp"
 
 /// <summary>
 /// Returns variable name as string.
@@ -49,12 +47,6 @@ public:
 	static bool get(const Json::Value& root, const String& fieldName, bool defaultValue);
 	///Get a Team from JSON.
 	static Team get(const Json::Value& root, const String& fieldName, Team defaultValue);
-	///Get a Team from JSON.
-	static Lane get(const Json::Value& root, const String& fieldName, Lane defaultValue);
-	///Get a Team from JSON.
-	static Category get(const Json::Value& root, const String& fieldName, Category defaultValue);
-	///Get a Team from JSON.
-	static Mask get(const Json::Value& root, const String& fieldName, Mask defaultValue);
 	/// <summary>
 	/// Load resource value from JSON.
 	/// </summary>

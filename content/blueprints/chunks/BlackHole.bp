@@ -1,0 +1,29 @@
+{
+    "ClassName": "ChunkData",
+    "bodyComp": {
+        "isDynamic": false
+    },
+    "moduleData": [
+        {
+            "title": "GravityField",
+            "Position": [
+                0,
+                0
+            ]
+        },
+		{
+            "title": "TriggerSensor",
+            "Position": [
+                0,
+                0
+            ]
+        },
+		{
+            "title": "BlackHoleGraphic",
+            "Position": [
+                0,
+                0
+            ]
+        }
+    ]
+}

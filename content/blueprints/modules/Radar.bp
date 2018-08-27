@@ -1,0 +1,11 @@
+{
+    "ClassName": "RadarData",
+	"rangeModifiers": {
+		"Zoom": {
+			"Value": 20
+		}
+	},
+	"baseDecor": {
+		"texName": "module/radar"
+	}
+}
