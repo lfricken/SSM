@@ -7,125 +7,25 @@
 #include "Courier.hpp"
 #include "EditBox.hpp"
 #include "Chatbox.hpp"
-#include "NetworkedSelection.hpp"
 #include "Draggable.hpp"
 #include "DraggableSurface.hpp"
-#include "Chunk.hpp"
 #include "Debugging.hpp"
-#include "Grid.hpp"
 #include "NumericDisplay.hpp"
 #include "ReturnSelection.hpp"
 #include "Tooltip.hpp"
 #include "JSON.hpp"
 #include "Player.hpp"
+#include "Game.hpp"
+#include "IOManager.hpp"
 
 using namespace leon;
 
-void StoreLoader::StoreButtonLoader::loadJson(const Json::Value& root)
+Overlay::Overlay(const IOComponentData& rData, const Core::IClock* _clock, Game* _parent) : m_gui(getGame()->getWindow()), m_io(rData, &Overlay::input, this), params(_clock, rData.pMyManager)
 {
-	GETJSON(previewTexture);
-	GETJSON(cost);
-	GETJSON(moduleBlueprint);
-	GETJSON(buttonName);
+	parent = _parent;
+	clock = _clock;
+	ioManager = rData.pMyManager;
 
-	moduleBlueprint += String((int)getGame()->getLocalPlayer().getTeam());
-}
-bool StoreLoader::addRandomButton(leon::Panel* pStore)
-{
-	if(lockedButtons.size() == 0)
-		return true;
-
-	sf::Vector2i initialGridPos = (sf::Vector2i)moduleSpawnPos;
-
-	auto butPos = sf::Vector2i(0, lastPosition);
-	sf::Vector2i gridsize((int)buttonSize.y, (int)buttonSize.y);
-
-	int index = lockedButtons.back();
-	lockedButtons.pop_back();
-	auto& button = buttonList[index];
-
-	{//cost display
-		NumericDisplayData cost;
-		cost.gridPosition = sf::Vector2i(1, lastPosition);
-		cost.gridSize = gridsize;
-		cost.numDigits = 2;
-		cost.digitSize = sf::Vector2f(buttonSize.y / 2, buttonSize.y);
-		auto display = new NumericDisplay(*pStore->getPanelPtr(), cost);
-		display->setNumber(button.cost.m_resourceValues.find(0)->second);
-		pStore->add(sptr<leon::WidgetBase>(display));
-	}
-	{//icon
-		PictureData preview;
-		preview.texName = button.previewTexture;
-		preview.size.x = buttonSize.y;
-		preview.size.y = buttonSize.y;
-		preview.gridPosition = butPos;
-		preview.gridSize = gridsize;
-		pStore->add(sptr<leon::WidgetBase>(new Picture(*pStore->getPanelPtr(), preview)));
-	}
-	{//purchase button
-		sf::Packet moduleInfo;
-		String title = button.moduleBlueprint;
-		moduleInfo << title;
-		moduleInfo << initialGridPos.x << initialGridPos.y;
-		button.cost.intoPacket(&moduleInfo);
-
-
-		Courier purchaseMessage;
-		purchaseMessage.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		purchaseMessage.message.reset("ship_editor", "buyModule", moduleInfo, 0, false);
-
-		leon::ButtonData buyButton;
-		buyButton.configFile = "TGUI/widgets/PartialTransparent.conf";
-		buyButton.ioComp.name = "buy" + String(lastPosition);
-		buyButton.gridPosition = butPos;
-		buyButton.gridSize = gridsize;
-		buyButton.size = (sf::Vector2f)gridsize;
-		buyButton.buttonText = button.buttonName;
-		buyButton.startHidden = false;
-		buyButton.alpha = 100;
-		buyButton.tooltip.text = "DEF: 4\nHP:  100";
-		buyButton.tooltip.textColor = sf::Color::White;
-		buyButton.tooltip.textPixelHeight = 16;
-		buyButton.tooltip.align = TooltipTextData::Alignment::RightOfMouse;
-		buyButton.ioComp.courierList.push_back(purchaseMessage);
-
-		pStore->add(sptr<leon::WidgetBase>(new leon::Button(*pStore->getPanelPtr(), buyButton)));
-	}
-
-	++lastPosition;
-	return false;
-}
-void StoreLoader::loadJson(const Json::Value& root)
-{
-	GETJSON(buttonSize);
-	GETJSON(previewWidth);
-	GETJSON(baseTransparency);
-	GETJSON(moduleSpawnPos);
-
-	if(!root["buttonList"].isNull())
-	{
-		const Json::Value storeButtons = root["buttonList"];
-		for(auto it = storeButtons.begin(); it != storeButtons.end(); ++it)
-		{
-			StoreButtonLoader button;
-			button.loadJson(*it);
-			buttonList.push_back(button);
-		}
-	}
-
-	for(int i = 0; (unsigned)i < buttonList.size(); ++i)
-	{
-		lockedButtons.push_back(i);
-	}
-	std::random_shuffle(lockedButtons.begin(), lockedButtons.end()); // make the buttons unlock in a random order.
-}
-
-
-
-
-Overlay::Overlay(const IOComponentData& rData) : m_gui(getGame()->getWindow()), m_io(rData, &Overlay::input, this)
-{
 	m_gui.setGlobalFont(contentDir() + "TGUI/fonts/DejaVuSans.ttf");
 	m_menuShowing = true;
 	m_scoreboardShowing = false;
@@ -149,26 +49,23 @@ void Overlay::mouseMoveToPosition(sf::Vector2f pos)
 	if(storePanel)
 		storePanel->mouseMoveToPosition(pos);
 }
-void Overlay::handleEvent(sf::Event& rEvent)
+bool Overlay::handleEvent(sf::Event& rEvent)
 {
-	m_gui.handleEvent(rEvent, false);
+	return m_gui.handleEvent(rEvent, false);
 }
 tgui::Gui& Overlay::getGui()
 {
 	return m_gui;
 }
-void Overlay::resetStore()
-{
-	storePanel.reset(loadStore());
-}
 void Overlay::loadMenus()
 {
+
+
 	auto pMain_menu = loadMainMenu();
 	getGame()->getOverlay().addPanel(sptr<leon::Panel>(pMain_menu));
 	//load other menus
 	getGame()->getOverlay().addPanel(sptr<leon::Panel>(loadConnectionHub(pMain_menu)));
 	getGame()->getOverlay().addPanel(sptr<leon::Panel>(loadMultiplayerLobby(pMain_menu)));
-	getGame()->getOverlay().addPanel(sptr<leon::Panel>(loadHud()));
 	getGame()->getOverlay().addPanel(sptr<leon::Panel>(loadSellMenu()));
 
 	//unlock some initially for debugging
@@ -176,7 +73,7 @@ void Overlay::loadMenus()
 
 	/**MESSAGE**/
 	sf::Vector2f closePanelSize = sf::Vector2f(640, 480);
-	leon::PanelData messagePanel;
+	leon::PanelData messagePanel(params);
 	messagePanel.ioComp.name = "message_panel";
 	messagePanel.startHidden = true;
 	messagePanel.backgroundColor = sf::Color::Blue;
@@ -184,7 +81,7 @@ void Overlay::loadMenus()
 	messagePanel.size = sf::Vector2f(closePanelSize.x, closePanelSize.y);
 	leon::Panel* pMessBox = new leon::Panel(getGame()->getOverlay().getGui(), messagePanel);
 	/**====OK====**/
-	leon::ButtonData closeMessBox;
+	leon::ButtonData closeMessBox(params);
 	closeMessBox.size = sf::Vector2f(50, 50);
 	closeMessBox.buttonText = "OK";
 	closeMessBox.screenCoords = sf::Vector2f(closePanelSize.x / 2 - 50 / 2, closePanelSize.y - (50 + 5));
@@ -202,7 +99,7 @@ leon::Panel* Overlay::loadSellMenu()
 	sf::Vector2i panelSize(100, 25);
 
 	{
-		leon::ReturnSelectionData data;
+		leon::ReturnSelectionData data(params);
 		data.ioComp.name = "return_selection";
 		data.startHidden = true;
 		data.backgroundColor = sf::Color(50, 50, 50, 128);
@@ -211,7 +108,7 @@ leon::Panel* Overlay::loadSellMenu()
 		panel = new leon::ReturnSelection(getGame()->getOverlay().getGui(), data);
 	}
 	{
-		leon::ButtonData sell;
+		leon::ButtonData sell(params);
 		sell.size = sf::Vector2f(100, 25);
 		sell.buttonText = "Sell";
 		sell.ioComp.name = "sell_button";
@@ -228,7 +125,7 @@ leon::Panel* Overlay::loadMainMenu()
 	leon::Panel* pButtons = nullptr;
 	//main menu panel
 	{
-		leon::PanelData mainMenuData;
+		leon::PanelData mainMenuData(params);
 		mainMenuData.ioComp.name = "main_menu";
 		mainMenuData.backgroundTex = "core/screen_1";
 		mainMenuData.screenCoords = sf::Vector2f(0, 0);
@@ -237,7 +134,7 @@ leon::Panel* Overlay::loadMainMenu()
 	}
 	//banner
 	{
-		leon::PictureData pictureData;
+		leon::PictureData pictureData(params);
 		pictureData.texName = "core/main_menu_logo";
 		pictureData.screenCoords = sf::Vector2f(20, 20);
 		pictureData.size = sf::Vector2f(847, 104);
@@ -247,7 +144,7 @@ leon::Panel* Overlay::loadMainMenu()
 
 	//buttons panel
 	{
-		leon::PanelData mainMenuData;
+		leon::PanelData mainMenuData(params);
 		mainMenuData.ioComp.name = "main_menu_buttons";
 		mainMenuData.backgroundColor = sf::Color::Transparent;
 		mainMenuData.screenCoords = sf::Vector2f(0, 0);
@@ -259,7 +156,7 @@ leon::Panel* Overlay::loadMainMenu()
 
 	//resume button
 	{
-		leon::ButtonData resumeButtonData;
+		leon::ButtonData resumeButtonData(params);
 		resumeButtonData.size = sf::Vector2f(150, 50);
 		resumeButtonData.buttonText = "Resume";
 		resumeButtonData.screenCoords = sf::Vector2f(20, 300);
@@ -276,7 +173,7 @@ leon::Panel* Overlay::loadMainMenu()
 	}
 	//multiplayer
 	{
-		leon::ButtonData multiplayer;
+		leon::ButtonData multiplayer(params);
 		multiplayer.size = sf::Vector2f(275, 50);
 		multiplayer.buttonText = "Multiplayer";
 		multiplayer.ioComp.name = "multiplayer_button";
@@ -300,7 +197,7 @@ leon::Panel* Overlay::loadMainMenu()
 		buttonMessage.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
 		buttonMessage.message.reset("game", "exit", voidPacket, 0, false);
 
-		leon::ButtonData exitButtonData;
+		leon::ButtonData exitButtonData(params);
 		exitButtonData.size = sf::Vector2f(100, 50);
 		exitButtonData.buttonText = "Exit";
 		exitButtonData.screenCoords = sf::Vector2f(20, 600);
@@ -318,7 +215,7 @@ leon::Panel* Overlay::loadConnectionHub(leon::Panel* pMain_menu)
 	/**MULTIPLAYER**/
 	{
 		sf::Vector2f multPanelSize = sf::Vector2f(640, 480);
-		leon::PanelData multiplayerConnect;
+		leon::PanelData multiplayerConnect(params);
 		multiplayerConnect.ioComp.name = "multiplayer_connect_lobby";
 		multiplayerConnect.startHidden = true;
 		multiplayerConnect.backgroundColor = sf::Color(50, 50, 50, 128);
@@ -330,7 +227,7 @@ leon::Panel* Overlay::loadConnectionHub(leon::Panel* pMain_menu)
 	}
 	/**JOIN**/
 	{
-		leon::ButtonData joinButt;
+		leon::ButtonData joinButt(params);
 		joinButt.ioComp.name = "join_button";
 		joinButt.size = sf::Vector2f(100, 50);
 		joinButt.buttonText = "Join";
@@ -343,7 +240,7 @@ leon::Panel* Overlay::loadConnectionHub(leon::Panel* pMain_menu)
 	}
 	/**HOST**/
 	{
-		leon::ButtonData hostButt;
+		leon::ButtonData hostButt(params);
 		hostButt.size = sf::Vector2f(100, 50);
 		hostButt.buttonText = "Host";
 		hostButt.screenCoords = sf::Vector2f(110, 5);
@@ -355,7 +252,7 @@ leon::Panel* Overlay::loadConnectionHub(leon::Panel* pMain_menu)
 	}
 	/**PORT**/
 	{
-		leon::EditBoxData port;
+		leon::EditBoxData port(params);
 		port.size = sf::Vector2f(125, 50);
 		port.startingText = "5050";
 		port.screenCoords = sf::Vector2f(215, 5);
@@ -367,7 +264,7 @@ leon::Panel* Overlay::loadConnectionHub(leon::Panel* pMain_menu)
 	}
 	/**IP**/
 	{
-		leon::EditBoxData ipAdd;
+		leon::EditBoxData ipAdd(params);
 		ipAdd.ioComp.name = "ipaddress_editbox";
 		ipAdd.size = sf::Vector2f(335, 50);
 		ipAdd.startingText = "IP Address";
@@ -388,7 +285,7 @@ leon::Panel* Overlay::loadMultiplayerLobby(leon::Panel* pMain_menu)
 
 	//lobby panel
 	{
-		leon::PanelData lobbyPanel;
+		leon::PanelData lobbyPanel(params);
 		lobbyPanel.ioComp.name = "lobby";
 		lobbyPanel.startHidden = true;
 		lobbyPanel.backgroundColor = sf::Color(50, 50, 50, 128);
@@ -398,7 +295,7 @@ leon::Panel* Overlay::loadMultiplayerLobby(leon::Panel* pMain_menu)
 	}
 	// disconnect button
 	{
-		leon::ButtonData disconnect;
+		leon::ButtonData disconnect(params);
 		disconnect.ioComp.name = "lobby_disconnect";
 		disconnect.size = sf::Vector2f(250, 50);
 		disconnect.buttonText = "Disconnect";
@@ -417,7 +314,7 @@ leon::Panel* Overlay::loadMultiplayerLobby(leon::Panel* pMain_menu)
 	}
 	//add AI button
 	{
-		leon::ButtonData addAI;
+		leon::ButtonData addAI(params);
 		addAI.size = sf::Vector2f(150, 50);
 		addAI.buttonText = "AI+";
 		addAI.screenCoords = sf::Vector2f(5, lobbyPanelSize.y - (addAI.size.y + 5 + 50));
@@ -431,7 +328,7 @@ leon::Panel* Overlay::loadMultiplayerLobby(leon::Panel* pMain_menu)
 	}
 	// launch game button
 	{
-		leon::ButtonData launch;
+		leon::ButtonData launch(params);
 		launch.ioComp.name = "lobby_launch";
 		launch.size = sf::Vector2f(150, 50);
 		launch.buttonText = "Launch";
@@ -452,245 +349,15 @@ leon::Panel* Overlay::loadMultiplayerLobby(leon::Panel* pMain_menu)
 	}
 	//chatbox
 	{
-		leon::ChatboxData chatbox;
+		leon::ChatboxData chatbox(params);
 		chatbox.ioComp.name = "lobby_chatbox";
 		chatbox.size = sf::Vector2f(400, 300);
 		chatbox.screenCoords = sf::Vector2f(3, 7);
 
 		pLobby->add(sptr<leon::WidgetBase>(new leon::Chatbox(*pLobby->getPanelPtr(), chatbox)));
 	}
-	// select team
-	{
-		leon::NetworkedSelectionData selectTeam;
-		selectTeam.backgroundColor = sf::Color(50, 50, 50, 128);
-		selectTeam.size = sf::Vector2f(200, 160);
-		selectTeam.itemSize = sf::Vector2f(200, 40);
-		selectTeam.screenCoords = sf::Vector2f(420, 207);
-		selectTeam.ioComp.name = "lobby_teamSelect";
-		selectTeam.startHidden = false;
-
-		leon::SelectableItemData data;
-
-		leon::LabelData label;
-		label.textSize = 16;
-		data.labelData.push_back(label);
-
-		Courier mes;
-		mes.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		mes.message.reset("networkboss", "Protocol::PlayerOption", voidPacket, 0, false);
-		data.buttData.ioComp.courierList.push_back(mes);
-		selectTeam.command = "setTeam";
-
-		data.labelData.back().text = "Team 1";
-		data.id = "1";
-		//data.texName = "menu/blue_menu";
-		data.texName = "menu/Blue_menu_button";
-		selectTeam.items.push_back(data);
-		data.labelData.back().text = "Team 2";
-		data.id = "2";
-		//data.texName = "menu/green_menu";
-		data.texName = "menu/Green_menu_button";
-		selectTeam.items.push_back(data);
-		data.labelData.back().text = "Team 3";
-		data.id = "3";
-		//data.texName = "menu/yellow_menu";
-		data.texName = "menu/Orange_menu_button";
-		selectTeam.items.push_back(data);
-		data.labelData.back().text = "Team 4";
-		data.id = "4";
-		//data.texName = "menu/pink_menu";
-		data.texName = "menu/Purple_menu_button";
-		selectTeam.items.push_back(data);
-
-		pLobby->add(sptr<leon::WidgetBase>(new leon::NetworkedSelection(*pLobby->getPanelPtr(), selectTeam)));
-	}
-	// select ship
-	{
-		leon::NetworkedSelectionData select;
-		select.size = sf::Vector2f(200, 200);
-		select.itemSize = sf::Vector2f(200, 40);
-		select.screenCoords = sf::Vector2f(420, 7);
-		select.backgroundColor = sf::Color(50, 50, 50, 128);
-		select.startHidden = false;
-		select.ioComp.name = "lobby_shipSelect";
-
-		leon::SelectableItemData item;
-		//data1.texName = "menu/red_menu";
-		item.texName = "menu/Red_menu_button";
-		leon::LabelData label1;
-		item.labelData.push_back(label1);
-
-		// Action when a networked item is selected.
-		Courier buttonClick;
-		buttonClick.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		buttonClick.message.reset("networkboss", "Protocol::PlayerOption", voidPacket, 0, false);//selecting ship
-		item.buttData.ioComp.courierList.push_back(buttonClick);
-		item.labelData.back().textSize = 16;
-
-		select.command = "setShip";
-
-		item.labelData.back().text = "Anubis";
-		item.id = "Anubis";
-		select.items.push_back(item);
-
-		item.labelData.back().text = "Caterina";
-		item.id = "Caterina";
-		select.items.push_back(item);
-
-		item.labelData.back().text = "Caterina";
-		item.id = "Caterina";
-		select.items.push_back(item);
-
-		item.labelData.back().text = "Dante";
-		item.id = "Dante";
-		select.items.push_back(item);
-
-		pLobby->add(sptr<leon::WidgetBase>(new leon::NetworkedSelection(*pLobby->getPanelPtr(), select)));
-	}
 
 	return pLobby;
-}
-bool Overlay::addStoreButton()
-{
-	if(storeData)
-		return storeData->addRandomButton(storePanel.get());
-	else
-	{
-		WARNING;
-		return false;
-	}
-}
-leon::Panel* Overlay::loadStore()
-{
-	leon::Panel* pStore = nullptr;
-	auto size = getGame()->getWindow().getSize();
-	sf::Vector2f storePanelSize = sf::Vector2f(size);
-
-	//load store first
-	{
-		leon::PanelData storePanelData;
-		storePanelData.ioComp.name = "store_default";
-		storePanelData.startHidden = true;
-		storePanelData.backgroundColor = sf::Color(50, 50, 50, 128);
-		storePanelData.screenCoords = sf::Vector2f(getGame()->getWindow().getSize().x / 2 - storePanelSize.x / 2, getGame()->getWindow().getSize().y / 2 - storePanelSize.y / 2);
-		storePanelData.size = sf::Vector2f(storePanelSize.x, storePanelSize.y);
-		pStore = new leon::Panel(getGame()->getOverlay().getGui(), storePanelData);
-	}
-	//close store button
-	{
-		leon::ButtonData close;
-		close.ioComp.name = "join_button";
-		close.screenCoords = sf::Vector2f(storePanelSize.x - 64 - 128, 4);
-		close.size = sf::Vector2f(32, 64);
-		close.buttonText = "";
-
-		Courier closeMes;
-		closeMes.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		closeMes.message.reset("store_default", "toggleHidden", voidPacket, 0, false);
-		close.ioComp.courierList.push_back(closeMes);
-
-		Courier guiMode;
-		guiMode.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		guiMode.message.reset("local_player", "toggleGuiMode", voidPacket, 0, false);
-		close.ioComp.courierList.push_back(guiMode);
-
-		Courier reconstruct;
-		reconstruct.condition.reset(EventType::LeftMouseClicked, 0, 'd', true);
-		reconstruct.message.reset("ship_editor", "buildShipWithConfiguration", voidPacket, 0, false);
-		close.ioComp.courierList.push_back(reconstruct);
-
-		pStore->add(sptr<leon::WidgetBase>(new leon::Button(*pStore->getPanelPtr(), close)));
-	}
-	//purchase buttons
-	{
-		std::ifstream store(contentDir() + "blueprints/gui/" + "Store.bp", std::ifstream::binary);
-		Json::Reader reader;
-		Json::Value root;
-		bool parsedSuccess = reader.parse(store, root, false);
-		if(parsedSuccess)
-		{
-			storeData.reset(new StoreLoader());
-			storeData->loadJson(root);
-		}
-		else
-			WARNING;
-	}
-	//ship editor
-	{
-		sf::Vector2i editGridSize(64, 64);
-		sf::Vector2f editGridPos(200.f, 0.f);
-		float width = (5.f + 1.f) * editGridSize.x;
-		float height = 7.f * editGridSize.y;
-		//ship editor background
-		{
-			PictureData editorBackground;
-			editorBackground.texName = "overlay/shipEditor";
-			editorBackground.screenCoords = editGridPos;
-			editorBackground.gridSize = editGridSize;
-			editorBackground.size = sf::Vector2f(width, height);
-			pStore->add(sptr<leon::WidgetBase>(new leon::Picture(*pStore->getPanelPtr(), editorBackground)));
-		}
-		//ship editor
-		{
-			DraggableSurfaceData surfaceData;
-			surfaceData.ioComp.name = "ship_editor";
-			surfaceData.screenCoords = editGridPos;
-			surfaceData.gridSize = editGridSize;
-			surfaceData.size = sf::Vector2f(width, height);
-			surfaceData.backgroundColor = sf::Color(32, 32, 32, 128);
-
-			pStore->add(sptr<leon::WidgetBase>(new leon::DraggableSurface(*pStore->getPanelPtr(), surfaceData)));
-		}
-	}
-
-	{
-		TooltipData tipData;
-		tipData.ioComp.name = "tooltip";
-		tipData.screenCoords = sf::Vector2f(512, 512);
-
-		pStore->add(sptr<leon::WidgetBase>(new leon::Tooltip(*pStore->getPanelPtr(), tipData)));
-	}
-
-	return pStore;
-}
-leon::Panel* Overlay::loadHud()
-{
-	leon::Panel* pHudPanel = nullptr;
-
-	//hud panel
-	{
-		sf::Vector2f textPanelSize = sf::Vector2f(256, 256);
-		leon::PanelData hudPanelData;
-		hudPanelData.ioComp.name = "hud_panel";
-		hudPanelData.startHidden = true;
-		hudPanelData.backgroundColor = sf::Color(50, 50, 50, 0);
-		hudPanelData.screenCoords = sf::Vector2f(768, 16);
-		hudPanelData.size = sf::Vector2f(textPanelSize.x, textPanelSize.y);
-		pHudPanel = new leon::Panel(getGame()->getOverlay().getGui(), hudPanelData);
-	}
-	//resources
-	Resources loop;
-	int spacing = 32;
-	leon::NumericDisplayData hudNumbers;
-	hudNumbers.screenCoords = sf::Vector2f(0, 0);
-	hudNumbers.digitSize = sf::Vector2f(20, 40);
-	hudNumbers.numDigits = 3;
-
-	int i = 0;
-	for(auto it = loop.m_resourceValues.begin(); it != loop.m_resourceValues.end(); ++it)
-	{
-		hudNumbers.ioComp.name = "hud_resource_" + String(i);
-
-		auto num = new leon::NumericDisplay(*pHudPanel->getPanelPtr(), hudNumbers);
-		num->setNumber(i);
-		pHudPanel->add(sptr<leon::WidgetBase>(num));
-
-
-		hudNumbers.screenCoords.x += hudNumbers.numDigits * hudNumbers.digitSize.x + spacing;
-		++i;
-	}
-
-	return pHudPanel;
 }
 void Overlay::toggleMenu(bool show)//display menu, assume gui control, send pause game command
 {
@@ -716,11 +383,11 @@ void Overlay::toggleMenu(bool show)//display menu, assume gui control, send paus
 		Message mes4("hud_panel", "setHidden", hideHUD, 0, false);
 		Message mes5("resume_button", "setHidden", hideMenu, 0, false);
 
-		getGame()->getCoreIO().recieve(mes1);
-		getGame()->getCoreIO().recieve(mes2);
-		getGame()->getCoreIO().recieve(mes3);
-		getGame()->getCoreIO().recieve(mes4);
-		getGame()->getCoreIO().recieve(mes5);
+		parent->getCoreIO().recieve(mes1);
+		parent->getCoreIO().recieve(mes2);
+		parent->getCoreIO().recieve(mes3);
+		parent->getCoreIO().recieve(mes4);
+		parent->getCoreIO().recieve(mes5);
 
 	}
 

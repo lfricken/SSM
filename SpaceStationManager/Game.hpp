@@ -26,11 +26,11 @@ namespace leon
 	class DragUpdater;
 }
 
-/// \brief Game is the global access point for data and state.
-///
+/// <summary>
 /// Contains all objects and memory.
 /// Built to rely on a single global instance of itself.
-class Game : public Clock, NonCopyable
+/// </summary>
+class Game : public Core::IClock, Core::INonCopyable
 {
 public:
 	Game();

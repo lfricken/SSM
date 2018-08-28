@@ -25,7 +25,7 @@ void NumericDisplay::f_initialize(const NumericDisplayData& rData)
 
 	for(int i = 0; i < rData.numDigits; ++i)
 	{
-		PictureData picData;
+		PictureData picData(getCore());
 		picData.size = sf::Vector2f(64, 128);
 		int gridX = ((rData.numDigits - 1) - i);
 		picData.screenCoords = sf::Vector2f(gridX*rData.digitSize.x, 0);

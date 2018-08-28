@@ -24,7 +24,7 @@ struct SpinnerData : public QuadComponentData
 class Spinner : public QuadComponent
 {
 public:
-	Spinner(const SpinnerData& rData);
+	Spinner(const SpinnerData& rData, BlueprintParams params);
 	virtual ~Spinner();
 
 	/// Set whether the Spinner is spinning or not.

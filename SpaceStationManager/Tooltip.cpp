@@ -2,11 +2,11 @@
 
 using namespace leon;
 
-Tooltip::Tooltip(tgui::Gui& gui, const TooltipData& data) : Panel(gui, data), m_fadeTimer(*getGame())
+Tooltip::Tooltip(tgui::Gui& gui, const TooltipData& data) : Panel(gui, data), m_fadeTimer(data.core.clock)
 {
 	f_init(data);
 }
-Tooltip::Tooltip(tgui::Container& container, const TooltipData& data) : Panel(container, data), m_fadeTimer(*getGame())
+Tooltip::Tooltip(tgui::Container& container, const TooltipData& data) : Panel(container, data), m_fadeTimer(data.core.clock)
 {
 	f_init(data);
 }

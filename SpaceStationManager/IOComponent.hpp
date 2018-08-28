@@ -1,12 +1,12 @@
 #pragma once
 
-#include "EventTypes.hpp"
 #include "stdafx.hpp"
+#include "EventTypes.hpp"
 #include "Courier.hpp"
 #include "Eventer.hpp"
-#include "IOManager.hpp"
 #include "NonCopyable.hpp"
 
+class IOManager;
 
 /// Used to initialize an IOComponent.
 struct IOComponentData
@@ -25,7 +25,7 @@ struct IOComponentData
 };
 
 /// A class can be given this to allow it to send messages to other IOComponents on other objects.
-class IOComponent : NonCopyable
+class IOComponent : Core::INonCopyable
 {
 public:
 

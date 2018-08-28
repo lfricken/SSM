@@ -21,7 +21,7 @@ void GraphicsComponentData::setCenterTopLeft()
 {
 	center = sf::Vector2f(-dimensions.x / 2, dimensions.y / 2);
 }
-GraphicsComponent::GraphicsComponent(const GraphicsComponentData& rData) : m_rUpdater(getGame()->getUniverse().getGfxUpdater()), m_animator(rData.texName)
+GraphicsComponent::GraphicsComponent(const GraphicsComponentData& rData, BlueprintParams params) : Blueprintable(rData, params), m_rUpdater(getGame()->getUniverse().getGfxUpdater()), m_animator(rData.texName)
 {
 	m_calculatedSize = false;
 
@@ -33,7 +33,7 @@ GraphicsComponent::GraphicsComponent(const GraphicsComponentData& rData) : m_rUp
 
 	m_dimensions = rData.dimensions;
 
-	m_permanentRot = Convert::degToRad(rData.permanentRot);
+	m_permanentRot = Math::toRad(rData.permanentRot);
 	m_center = rData.center;
 }
 GraphicsComponent::~GraphicsComponent()

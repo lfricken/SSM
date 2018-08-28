@@ -7,8 +7,8 @@ namespace leon
 	/// Data to initialize a Panel.
 	struct PanelData : public WidgetBaseData
 	{
-		PanelData() :
-			WidgetBaseData(),
+		PanelData(BlueprintParams params) :
+			WidgetBaseData(params),
 			///hidePanelButton(false),
 			backgroundColor(sf::Color(255,0,255,128))
 		{

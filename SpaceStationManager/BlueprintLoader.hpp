@@ -19,7 +19,7 @@ enum class UpgradeType;
 
 
 /// Handles the loading of Blueprints from files.
-class BlueprintLoader : NonCopyable
+class BlueprintLoader : Core::INonCopyable
 {
 public:
 	BlueprintLoader();

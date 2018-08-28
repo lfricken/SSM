@@ -4,6 +4,7 @@
 #include "Globals.hpp"
 #include "IOComponent.hpp"
 #include "NonCopyable.hpp"
+#include "Blueprintable.hpp"
 
 /// A wrapper around TGUI Widgets.
 namespace leon
@@ -39,10 +40,13 @@ namespace leon
 		void fromPacket(sf::Packet* data);
 	};
 
-	/// All data necessary to create a new Widget.
-	struct WidgetBaseData
+	/// <summary>
+	/// Data necessary to create a new Widget.
+	/// </summary>
+	struct WidgetBaseData : BlueprintableData
 	{
-		WidgetBaseData() :
+		WidgetBaseData(BlueprintParams params) :
+			core(params),
 			startHidden(false),
 			//configFile("TGUI/widgets/Black.conf"),
 			configFile("TGUI/widgets/NewMenu.conf"),
@@ -56,6 +60,8 @@ namespace leon
 			gridPosition(1, 1)
 		{
 		}
+		BlueprintParams core;
+
 		bool startHidden; // should this widget start invisible
 		String configFile; // TGUI config file
 
@@ -64,7 +70,7 @@ namespace leon
 		unsigned char alpha; // 0 is fully transparent
 
 		bool movesWithMouse; // true if this widget moves with the mouse
-		float percievedDistance; // large (80+) for less movement with mouse
+		float percievedDistance; // TODO what does this do?: large (80+) for less movement with mouse ???
 
 		sf::Vector2i gridSize;//how big are the grid snaps, THIS GETS SET IN DraggableSurface.cpp
 		sf::Vector2i gridPosition;//if this isn't -1,-1, we will override our screen coordinates and set to this grid position
@@ -74,8 +80,10 @@ namespace leon
 		IOComponentData ioComp;
 	};
 
+	/// <summary>
 	/// Widget base class for all GUI items.
-	class WidgetBase : NonCopyable
+	/// </summary>
+	class WidgetBase : Core::INonCopyable
 	{
 	public:
 		WidgetBase(tgui::Gui& gui, const WidgetBaseData& rData);
@@ -162,6 +170,7 @@ namespace leon
 
 		virtual void triggerHook(sf::Packet& rPack);
 
+		BlueprintParams& getCore();
 	private:
 		void input(const String rCommand, sf::Packet rData);
 		void f_callback(const tgui::Callback& callback);
@@ -170,5 +179,6 @@ namespace leon
 
 		tgui::Container* pCon;
 		tgui::Gui* pGui;
+		BlueprintParams m_core;
 	};
 }

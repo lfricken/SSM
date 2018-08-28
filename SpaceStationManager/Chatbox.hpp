@@ -10,8 +10,9 @@ namespace leon
 	/// Data to initialize a Chatbox
 	struct ChatboxData : public WidgetBaseData
 	{
-		ChatboxData() :
-			WidgetBaseData(),
+		ChatboxData(BlueprintParams params) :
+			WidgetBaseData(params),
+			editBoxData(params),
 			backgroundColor(sf::Color(255,0,255,128))
 		{
 			ioComp.name = "ChatboxName";

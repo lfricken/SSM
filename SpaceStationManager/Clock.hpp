@@ -1,14 +1,19 @@
 #pragma once
 
-/// <summary>
-/// Can tell time, used for Timers.
-/// </summary>
-class Clock
+namespace Core
 {
-public:
-	Clock();
-	~Clock();
+	/// <summary>
+	/// Can tell time. Used for Timers.
+	/// </summary>
+	class IClock
+	{
+	public:
+		IClock();
+		~IClock();
 
-	virtual float getTime() const = 0;
-};
-
+		/// <summary>
+		/// Return current time.
+		/// </summary>
+		virtual float getTime() const = 0;
+	};
+}

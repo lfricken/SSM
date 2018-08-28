@@ -1,5 +1,6 @@
 #include "WidgetBase.hpp"
 #include "Debugging.hpp"
+#include "IOManager.hpp"
 
 using namespace leon;
 
@@ -32,13 +33,13 @@ void TooltipTextData::fromPacket(sf::Packet* dataPtr)
 	align = (Alignment)alignInt;
 }
 
-WidgetBase::WidgetBase(tgui::Gui& gui, const WidgetBaseData& rData) : m_io(rData.ioComp, &leon::WidgetBase::input, this)
+WidgetBase::WidgetBase(tgui::Gui& gui, const WidgetBaseData& rData) : m_io(rData.ioComp, &leon::WidgetBase::input, this), m_core(rData.core)
 {
 	pCon = nullptr;
 	pGui = &gui;
 	init(rData);
 }
-WidgetBase::WidgetBase(tgui::Container& rContainer, const WidgetBaseData& rData) : m_io(rData.ioComp, &leon::WidgetBase::input, this)
+WidgetBase::WidgetBase(tgui::Container& rContainer, const WidgetBaseData& rData) : m_io(rData.ioComp, &leon::WidgetBase::input, this), m_core(rData.core)
 {
 	pCon = &rContainer;
 	pGui = nullptr;
@@ -125,7 +126,7 @@ void WidgetBase::toggleHidden(bool hidden)
 
 		Message message;
 		message.reset("tooltip", "unsetTooltip", voidPacket, 0, false);
-		getGame()->getCoreIO().recieve(message);
+		this->getCore().manager->recieve(message);
 	}
 	else
 		show();
@@ -150,10 +151,10 @@ void WidgetBase::mouseMoveToPosition(sf::Vector2f pos)
 {
 	if(m_movesWithMouse)
 	{
-		auto size = (sf::Vector2f)getGame()->getWindow().getSize();
-		size.x /= 2;
-		size.y /= 2;
-		auto positionOffset = pos - size;
+		auto halfSize = (sf::Vector2f)getGame()->getWindow().getSize();
+		halfSize.x /= 2;
+		halfSize.y /= 2;
+		auto positionOffset = pos - halfSize; // center
 		positionOffset.x /= m_percievedDistance;
 		positionOffset.y /= m_percievedDistance;
 		m_pWidget->setPosition(m_truePosition - positionOffset);
@@ -358,6 +359,10 @@ void WidgetBase::leftMouseReleasedHook(sf::Packet& rPack)
 void WidgetBase::triggerHook(sf::Packet& rPack)
 {
 	rPack << m_io.getName();
+}
+BlueprintParams& WidgetBase::getCore()
+{
+	return m_core;
 }
 
 

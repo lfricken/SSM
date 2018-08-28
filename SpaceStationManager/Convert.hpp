@@ -16,7 +16,7 @@ public:
 	/// </summary>
 	static T screenToUniverse(const T& value)
 	{
-		return value * static_cast<float>(screenToUniverse);
+		return value * screenToUniverseRatio;
 	}
 
 	template<typename T>
@@ -25,7 +25,7 @@ public:
 	/// </summary>
 	static T universeToScreen(const T& value)
 	{
-		return value * static_cast<float>(universeToScreen);
+		return value * universeToScreenRatio;
 	}
 
 private:

@@ -3,12 +3,15 @@
 #include "Panel.hpp"
 #include "Button.hpp"
 #include "DragComponent.hpp"
+#include "Timer.hpp"
 
 namespace leon
 {
 	struct TooltipData : PanelData
 	{
-		TooltipData()
+		TooltipData(BlueprintParams params) :
+			PanelData(params),
+			buttonData(params)
 		{
 			float tooltipWidth = 1024;
 

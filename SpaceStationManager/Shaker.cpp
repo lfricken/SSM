@@ -1,7 +1,7 @@
 #include "Shaker.hpp"
 
 
-Shaker::Shaker() : m_shakeTimer(0.f)
+Shaker::Shaker(const Core::IClock* clock) : m_shakeTimer(clock)
 {
 
 }

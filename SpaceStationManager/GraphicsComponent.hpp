@@ -4,13 +4,18 @@
 #include "GraphicsLayer.hpp"
 #include "Animator.hpp"
 #include "NonCopyable.hpp"
+#include "Blueprintable.hpp"
 
 class GraphicsComponentUpdater;
+namespace Core
+{
+	class IClock;
+}
 
 /// Blueprint for a GraphicsComponent.
-struct GraphicsComponentData
+struct GraphicsComponentData : BlueprintableData
 {
-	GraphicsComponentData()
+	GraphicsComponentData() : BlueprintableData()
 	{
 		dimensions = sf::Vector2f(256,256);
 		permanentRot = 0;//degrees CCW
@@ -37,10 +42,10 @@ struct GraphicsComponentData
 /// \brief Base type for all game related graphics.
 ///
 /// Does not handle most GUI graphics.
-class GraphicsComponent : NonCopyable
+class GraphicsComponent : public Blueprintable, public Core::INonCopyable
 {
 public:
-	GraphicsComponent(const GraphicsComponentData& rData);
+	GraphicsComponent(const GraphicsComponentData& rData, BlueprintParams params);
 	virtual ~GraphicsComponent();
 
 	/// Set the position of this object in world coordinates.

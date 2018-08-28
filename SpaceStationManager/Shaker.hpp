@@ -8,7 +8,7 @@
 class Shaker
 {
 public:
-	Shaker();
+	Shaker(const Core::IClock* clock);
 	~Shaker();
 
 	/// <summary>

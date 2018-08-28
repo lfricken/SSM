@@ -8,8 +8,8 @@ namespace leon
 	/// Data to initialize a Panel.
 	struct ReturnSelectionData : public PanelData
 	{
-		ReturnSelectionData() :
-			PanelData()
+		ReturnSelectionData(BlueprintParams params) :
+			PanelData(params)
 		{
 		}
 	};

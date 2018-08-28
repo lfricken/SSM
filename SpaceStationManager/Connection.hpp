@@ -12,7 +12,7 @@
 ///
 /// 1 is used by the Client to stay connected to the server.
 /// 1 for each client used by the Server.
-class Connection : public BasePlayerTraits, NonCopyable
+class Connection : public BasePlayerTraits, Core::INonCopyable
 {
 public:
 	Connection(sf::UdpSocket* pSocket, sptr<sf::TcpSocket> spTcpSocket, bool valid);

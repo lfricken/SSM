@@ -30,7 +30,7 @@ struct NetworkBossData
 	IOComponentData ioComp;
 };
 /// \brief Manages network Connections, and sending and recieving data.
-class NetworkBoss : NonCopyable
+class NetworkBoss : Core::INonCopyable
 {
 public:
 	NetworkBoss(const NetworkBossData& rData);

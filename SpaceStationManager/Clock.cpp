@@ -1,11 +1,13 @@
 #include "Clock.hpp"
 
-
-Clock::Clock()
+namespace Core
 {
+	IClock::IClock()
+	{
 
-}
-Clock::~Clock()
-{
+	}
+	IClock::~IClock()
+	{
 
+	}
 }

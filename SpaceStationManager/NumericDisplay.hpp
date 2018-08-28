@@ -11,7 +11,8 @@ namespace leon
 	/// </summary>
 	struct NumericDisplayData : public PanelData
 	{
-		NumericDisplayData() :
+		NumericDisplayData(BlueprintParams params) :
+			PanelData(params),
 			numDigits(3),
 			digitSize(32,64)
 		{

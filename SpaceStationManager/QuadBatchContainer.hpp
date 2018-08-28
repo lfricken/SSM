@@ -30,7 +30,7 @@ struct Batch
 
 
 /// Stores a Batch for each Texture.
-class QuadBatchContainer : public sf::Drawable, NonCopyable
+class QuadBatchContainer : public sf::Drawable, Core::INonCopyable
 {
 public:
 	QuadBatchContainer();

@@ -9,7 +9,7 @@ class IOComponent;
 
 
 /// Controls the sending of Messages throughout the program and stores all the IOComponents in a list.
-class IOManager : NonCopyable
+class IOManager : Core::INonCopyable
 {
 public:
 	IOManager(bool acceptsLocalMessages, bool networked = false);

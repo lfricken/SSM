@@ -29,9 +29,10 @@ namespace leon
 	/// Used to intialize SelectableItem
 	struct SelectableItemData
 	{
-		SelectableItemData() :
+		SelectableItemData(BlueprintParams params) :
 			texName("menu/default_menu"),
-			id("0")
+			id("0"),
+			buttData(params)
 		{
 			buttData.screenCoords = sf::Vector2f(0, 0);
 			buttData.alpha = 60;
@@ -45,7 +46,7 @@ namespace leon
 	};
 
 	/// An object that goes in a NetworkedSelection list. Implements a button to send a special command.
-	class SelectableItem : NonCopyable
+	class SelectableItem : Core::INonCopyable
 	{
 	public:
 		SelectableItem(tgui::Gui& gui, const SelectableItemData& rData);

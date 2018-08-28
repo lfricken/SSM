@@ -7,8 +7,8 @@ namespace leon
 	/// Initialize an EditBox
 	struct EditBoxData : public WidgetBaseData
 	{
-		EditBoxData() :
-			WidgetBaseData(),
+		EditBoxData(BlueprintParams params) :
+			WidgetBaseData(params),
 			startingText("FIXME")
 		{
 		}

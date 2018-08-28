@@ -11,7 +11,7 @@ void SpinnerData::loadJson(const Json::Value& root)
 	GETJSON(randomRot);
 	GETJSON(startOn);
 }
-Spinner::Spinner(const SpinnerData& rData) : QuadComponent(rData)
+Spinner::Spinner(const SpinnerData& rData, BlueprintParams params) : QuadComponent(rData, params), m_timer(params.clock)
 {
 	m_timer.getTimeElapsed();
 	setRotationRate(rData.rate);
@@ -31,7 +31,7 @@ void Spinner::toggleOn(bool on)
 }
 void Spinner::setRotationRate(float degCCW)
 {
-	m_rate = Convert::degToRad(degCCW);
+	m_rate = Math::toDeg(degCCW);
 }
 void Spinner::postUpdate()
 {

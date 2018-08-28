@@ -11,8 +11,9 @@ namespace leon
 	/// \brief Data to initialize Draggable.
 	struct DraggableData : public ButtonData
 	{
-		DraggableData() :
-			ButtonData(),
+		DraggableData(BlueprintParams params) :
+			ButtonData(params),
+			icon(params),
 			parentPtr(nullptr),
 			myPanelOffset(0, 0)
 		{

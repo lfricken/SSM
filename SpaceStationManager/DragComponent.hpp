@@ -10,7 +10,7 @@ namespace leon
 	/// <summary>
 	/// A small class to get the mouse coordinates when being dragged.
 	/// </summary>
-	class DragComponent : NonCopyable
+	class DragComponent : Core::INonCopyable
 	{
 	public:
 		template <typename T>

@@ -15,7 +15,7 @@ namespace leon
 ///
 /// We need a sound manager because there are a max number of sounds. So we want to prevent going over a certain number.
 /// Otherwise the program will crash.
-class SoundManager : NonCopyable
+class SoundManager : Core::INonCopyable
 {
 public:
 	SoundManager();

@@ -8,7 +8,7 @@ class NetworkComponent;
 /// \brief Holds list of NetworkComponent
 ///
 /// Will sync data between games, by sending data pairwise between NetworkFactory lists.
-class NetworkFactory : NonCopyable
+class NetworkFactory : Core::INonCopyable
 {
 public:
 	NetworkFactory(String name);

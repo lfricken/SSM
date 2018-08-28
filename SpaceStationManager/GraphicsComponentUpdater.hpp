@@ -7,7 +7,7 @@ class GraphicsComponent;
 
 
 /// Holds a reference to all GraphicsComponents so we can tell them to update their animation.
-class GraphicsComponentUpdater : NonCopyable
+class GraphicsComponentUpdater : Core::INonCopyable
 {
 public:
 	GraphicsComponentUpdater();

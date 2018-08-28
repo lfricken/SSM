@@ -7,8 +7,8 @@ namespace leon
 	/// Data to initialize a Button.
 	struct ButtonData : public WidgetBaseData
 	{
-		ButtonData() :
-			WidgetBaseData(),
+		ButtonData(BlueprintParams params) :
+			WidgetBaseData(params),
 			buttonText("FIXME")
 		{
 		}

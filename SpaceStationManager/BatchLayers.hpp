@@ -10,7 +10,7 @@
 /// So all the Textures of one layer get drawn
 /// then the next layer, etc.
 /// To control layering, examine GraphicsLayer.hpp
-class BatchLayers : NonCopyable
+class BatchLayers : Core::INonCopyable
 {
 public:
 	BatchLayers();

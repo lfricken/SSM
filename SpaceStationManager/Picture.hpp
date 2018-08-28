@@ -7,8 +7,8 @@ namespace leon
 	/// Data to initialize a Picture.
 	struct PictureData : public WidgetBaseData
 	{
-		PictureData() :
-			WidgetBaseData(),
+		PictureData(BlueprintParams params) :
+			WidgetBaseData(params),
 			texName("default")
 		{
 		}

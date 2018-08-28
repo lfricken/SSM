@@ -3,6 +3,7 @@
 #include "Universe.hpp"
 #include "JSON.hpp"
 #include "Debugging.hpp"
+#include "IOManager.hpp"
 
 IOComponent::~IOComponent()
 {

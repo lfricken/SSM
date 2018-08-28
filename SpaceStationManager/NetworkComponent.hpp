@@ -17,7 +17,7 @@ struct NetworkComponentData
 };
 
 /// \brief Syncs data between objects on different computers.
-class NetworkComponent : NonCopyable
+class NetworkComponent : Core::INonCopyable
 {
 public:
 	template <typename T>

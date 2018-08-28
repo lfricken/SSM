@@ -1,23 +1,16 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Controller.hpp"
 #include "Camera.hpp"
 #include "BasePlayerTraits.hpp"
 #include "Resources.hpp"
+#include "IOComponent.hpp"
 
+class IOManager;
 
-class QuadComponent;
-class LinearMeter;
-class Minimap;
-namespace leon
-{
-	class Grid;
-}
-
-/// \brief Key configurations.
-///
-/// This system would allow loading and saving of key configurations.
+/// <summary>
+/// Allows loading and saving of key configurations.
+/// </summary>
 struct InputConfig
 {
 	InputConfig();
@@ -63,8 +56,8 @@ struct InputConfig
 /// Data necessary for local player.
 struct PlayerData
 {
-	PlayerData() :
-		ioComp(&getGame()->getCoreIO()),
+	PlayerData(IOManager* manager) :
+		ioComp(manager),
 		keyConfig(),
 		tracking(true)
 	{

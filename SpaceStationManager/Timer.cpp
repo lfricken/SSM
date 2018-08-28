@@ -2,26 +2,26 @@
 #include "globals.hpp"
 
 #include "Universe.hpp"
-
-Timer::Timer()
+//
+//Timer::Timer()
+//{
+//	clock = nullptr;
+//
+//	m_lastTimeElapsed = getTime();
+//	m_countDownTime = 0.f;
+//	m_timeUpTime = getTime() + m_countDownTime;
+//}
+//Timer::Timer(float time)
+//{
+//	clock = nullptr;
+//
+//	m_lastTimeElapsed = time;
+//	m_countDownTime = 0.f;
+//	m_timeUpTime = time + m_countDownTime;
+//}
+Timer::Timer(const Core::IClock* clockRef)
 {
-	clock = nullptr;
-
-	m_lastTimeElapsed = getTime();
-	m_countDownTime = 0.f;
-	m_timeUpTime = getTime() + m_countDownTime;
-}
-Timer::Timer(float time)
-{
-	clock = nullptr;
-
-	m_lastTimeElapsed = time;
-	m_countDownTime = 0.f;
-	m_timeUpTime = time + m_countDownTime;
-}
-Timer::Timer(const Clock& clockRef)
-{
-	clock = &clockRef;
+	clock = clockRef;
 
 	m_lastTimeElapsed = getTime();
 	m_countDownTime = 0.f;

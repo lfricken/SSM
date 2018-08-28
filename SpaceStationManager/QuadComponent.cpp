@@ -14,7 +14,7 @@ void QuadComponentData::loadJson(const Json::Value& root)
 
 
 }
-QuadComponent::QuadComponent(const QuadComponentData& rData) : GraphicsComponent(rData)
+QuadComponent::QuadComponent(const QuadComponentData& rData, BlueprintParams params) : GraphicsComponent(rData, params)
 {
 	m_numVerts = 4;
 

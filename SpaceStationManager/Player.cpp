@@ -104,7 +104,7 @@ void Player::getLiveInput(Vec2 mouseScreenPosition)
 			m_camera.move(Vec2(speed, 0));
 
 		// dev stuff
-		static Timer spawnTimer;
+		static Timer spawnTimer(getGame());
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8))
 		{
 			if(spawnTimer.isTimeUp())
@@ -132,7 +132,7 @@ void Player::getWindowEvents(sf::RenderWindow& rWindow)
 			toggleFocus(true);
 		if(event.type == sf::Event::Resized)
 		{
-			//TODO WE MAY NEED TO ADJUST OTHER VIEW ELEMENTS???
+			// window was resized
 			getGame()->resizeStaticView();
 			m_camera.resize();
 			getGame()->getOverlay().getGui().handleEvent(event, false);
@@ -140,7 +140,7 @@ void Player::getWindowEvents(sf::RenderWindow& rWindow)
 
 		if(event.type == sf::Event::Closed)
 		{
-			rWindow.close(); // if someone hits x, close the window
+			rWindow.close(); // if someone hits the window X, close the window
 		}
 		if(event.type == sf::Event::KeyPressed)
 		{
@@ -160,9 +160,8 @@ void Player::getWindowEvents(sf::RenderWindow& rWindow)
 
 
 		getGame()->getOverlay().handleEvent(event); // TODO if we don't handle the event we should pass it to the universe
-		{
 
-		}
+
 		if(m_canInteractWithUniverse)
 		{
 			// zoom
@@ -181,7 +180,7 @@ void Player::getWindowEvents(sf::RenderWindow& rWindow)
 				if(event.key.code == sf::Keyboard::Numpad9)
 					getGame()->getUniverse().toggleDebugDraw();
 				if(event.key.code == sf::Keyboard::Numpad0)
-					getGame()->getUniverse().togglePause();
+					getGame()->getUniverse().pauser.togglePause();
 			}
 		}
 	}

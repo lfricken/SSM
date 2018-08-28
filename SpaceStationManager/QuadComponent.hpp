@@ -22,7 +22,7 @@ struct QuadComponentData : public GraphicsComponentData
 class QuadComponent : public GraphicsComponent
 {
 public:
-	QuadComponent(const QuadComponentData& rData);
+	QuadComponent(const QuadComponentData& rData, BlueprintParams params);
 	virtual ~QuadComponent();
 
 	/// Forced to override pure virtual function.

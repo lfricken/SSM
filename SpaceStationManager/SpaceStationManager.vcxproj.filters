@@ -209,9 +209,6 @@
     <ClInclude Include="NetworkComponent.hpp">
       <Filter>Header Files\Networking</Filter>
     </ClInclude>
-    <ClInclude Include="NetworkedSelection.hpp">
-      <Filter>Header Files\Networking</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkFactory.hpp">
       <Filter>Header Files\Networking</Filter>
     </ClInclude>
@@ -318,6 +315,9 @@
       <Filter>Header Files\System</Filter>
     </ClInclude>
     <ClInclude Include="Timer.hpp">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Pauser.hpp">
       <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
@@ -445,9 +445,6 @@
     <ClCompile Include="NetworkComponent.cpp">
       <Filter>Source Files\Networking</Filter>
     </ClCompile>
-    <ClCompile Include="NetworkedSelection.cpp">
-      <Filter>Source Files\Networking</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkFactory.cpp">
       <Filter>Source Files\Networking</Filter>
     </ClCompile>
@@ -519,6 +516,9 @@
     </ClCompile>
     <ClCompile Include="Spinner.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Pauser.cpp">
+      <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

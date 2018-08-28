@@ -10,8 +10,8 @@ namespace leon
 	/// Data to initialize DraggableSurface.
 	struct DraggableSurfaceData : public PanelData
 	{
-		DraggableSurfaceData() :
-			PanelData(),
+		DraggableSurfaceData(BlueprintParams params) :
+			PanelData(params),
 			gridOffset(2, 3)
 		{
 
