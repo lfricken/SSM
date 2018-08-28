@@ -1,6 +1,6 @@
 #include "LinearMeter.hpp"
 
-LinearMeter::LinearMeter(const LinearMeterData& rData) : QuadComponent(rData)
+LinearMeter::LinearMeter(const LinearMeterData& rData, BlueprintParams params) : QuadComponent(rData, params)
 {
 	m_percent = 0;
 }

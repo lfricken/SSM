@@ -1,12 +1,9 @@
 #include "DraggableSurface.hpp"
 #include "Draggable.hpp"
-#include "ShipModule.hpp"
 #include "BlueprintLoader.hpp"
 #include "Network.hpp"
 #include "Player.hpp"
 #include "Resources.hpp"
-#include "Controller.hpp"
-#include "Chunk.hpp"
 #include "Overlay.hpp"
 
 using namespace leon;

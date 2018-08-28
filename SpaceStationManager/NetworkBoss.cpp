@@ -3,10 +3,7 @@
 #include "IOManager.hpp"
 #include "Universe.hpp"
 #include "Player.hpp"
-#include "SlaveLocator.hpp"
-#include "Chunk.hpp"
 #include "BlueprintLoader.hpp"
-#include "Module.hpp"
 
 /// <summary>
 /// anyone being told to load the game
@@ -17,27 +14,7 @@ void NetworkBoss::recieveLevel(sf::Packet& data)
 	GameLaunchData launchData;
 
 	/**Level**/
-	data >> launchData.level;
-
-	/**List of Player Data**/
-	int32_t numControllers;
-	data >> numControllers;
-	for(int32_t i = 0; i < numControllers; ++i)
-	{
-		GameLaunchData::PlayerData playerInstance;
-		int tempTeam;
-
-		data >> playerInstance.slaveName;
-		data >> playerInstance.playerName;
-		data >> playerInstance.playerMoney;
-		data >> playerInstance.ship;
-		data >> tempTeam;
-		playerInstance.team = (Team)tempTeam;
-		data >> playerInstance.isAI;
-		launchData.playerList.push_back(playerInstance);
-	}
-	/**Local Controller**/
-	data >> launchData.localController;
+	data >> launchData.levelDirectory;
 
 	/**Launch the game!**/
 	getGame()->launchGame(launchData);
@@ -47,80 +24,21 @@ void NetworkBoss::recieveLevel(sf::Packet& data)
 /// </summary>
 void NetworkBoss::launchMultiplayerGame()
 {
-	const int initialMoney = 50;
-	sf::Packet data;
+	sf::Packet launchData;
 
-	String level = "Alpha Centauri";
+	String level = "level1";
 
-	data << level;
-	data << static_cast<int32_t>(m_connections.size() + 1 + m_numAI);//number of controllers +1 for host +num_ai for number of AI
+	launchData << level;
 
-	//host
-	{
-//		getGame()->getLocalPlayer().setMoney(initialMoney);
-
-		data << "1";
-		data << getGame()->getLocalPlayer().getName();
-		data << 3;// getGame()->getLocalPlayer().getMoney();
-		data << getGame()->getLocalPlayer().getShipChoice();
-		data << (int)getGame()->getLocalPlayer().getTeam();
-		data << false;
-	}
-	//for clients
-	for(int32_t i = 0; i < (signed)m_connections.size(); ++i)
-	{
-	//	m_connections[i]->setMoney(initialMoney);
-
-		String slaveName;
-		slaveName.from(i + 1 + 1);//+1 for host, +1 for index offset
-		sptr<Connection> client = m_connections[i];
-		String playerName = client->getName();
-		Money playerMoney = 5;// client->getMoney();
-		String shipName = client->getShipChoice();
-		Team team = client->getTeam();
-
-		data << slaveName;
-		data << playerName;
-		data << playerMoney;
-		data << shipName;
-		data << (int)team;
-		data << false;//is ai
-	}
-
-
-	//for ai
-	for(int i = 1; i <= m_numAI; ++i)
-	{
-		String aiSlaveName;
-		aiSlaveName.from(m_connections.size() + 20 + i);
-		String aiShipName = "Anubis";
-		int aiTeam = ((i-1)%4)+1;//TODO fix this shit code
-
-		data << aiSlaveName;
-		data << "AI_PLAYER";
-		data << (int)0;
-		data << aiShipName;
-		data << aiTeam;
-		data << true;
-	}
-	m_numAI = 0;//reset this value
-	
-
-	int32_t controller = 0;
-	sf::Packet hostData(data);
-	hostData << controller;
-	++controller;
-
+	sf::Packet hostLaunchData(launchData);
 	for(auto it = m_connections.begin(); it != m_connections.end(); ++it)
 	{
-		sf::Packet launchData(data);
-		(*it)->setController(controller);
-		launchData << controller;
-		++controller;
-		(*it)->sendTcp(Protocol::LoadLevel, launchData);
+		sf::Packet clientLaunchData(launchData);
+		// do anything per player to launchData;
+		(*it)->sendTcp(Protocol::LoadLevel, clientLaunchData);
 	}
 
-	recieveLevel(hostData);
+	recieveLevel(hostLaunchData);
 }
 NetworkBoss::NetworkBoss(const NetworkBossData& rData) : m_io(rData.ioComp, &NetworkBoss::input, this), m_dataProtocol("standard"), m_nwFactoryTcp("tcp")
 {
@@ -347,48 +265,6 @@ void NetworkBoss::update()
 	sendTcp();
 }
 /// <summary>
-/// Process data about control state, ship position, module health, etc.
-/// </summary>
-void NetworkBoss::udpRecieve()
-{
-	if(m_nwGameStarted)
-	{
-		sf::Packet data;
-		sf::IpAddress remoteIP;
-		unsigned short remotePort;
-
-		bool done = false;
-		while(!done)
-		{
-			data.clear();
-			if(m_udp.receive(data, remoteIP, remotePort) == sf::Socket::Done)/**FOR EACH PACKET**/
-			{
-				Connection* pCon = findConnection(remoteIP, remotePort);
-				if(pCon != nullptr)//the message is from one of our connections
-				{
-					Protocol proto = pCon->recievePacket(data);
-
-					if(proto != Protocol::End)
-					{
-						if(proto == Protocol::Control)
-							getGame()->getUniverse().getControllerFactory().getNWFactory().process(data);
-						else if(proto == Protocol::Data)
-							m_dataProtocol.process(data);
-						else if(proto == Protocol::PlayerTraits)
-							pCon->recievePlayerTraits(data);
-						else
-							WARNING;
-					}
-				}
-				else//if we don't regonize the remoteAddress, we should ignore it
-					WARNING;
-			}
-			else
-				done = true;
-		}
-	}
-}
-/// <summary>
 /// anyone receive data from each TcpPort (tcp)
 /// </summary>
 void NetworkBoss::tcpRecieve()
@@ -466,33 +342,6 @@ void NetworkBoss::tcpRecieve()
 	}
 }
 /// <summary>
-/// Anyone sending via UDP to all connections
-/// </summary>
-void NetworkBoss::sendUdp()
-{
-	sf::Packet udpPacket;
-	static int counter = 0;
-	const int frequency = 6;
-	if(counter >= frequency)
-	{
-		counter = 0;
-		//universe component data
-		if(getNWState() == NWState::Server)
-		{
-			m_dataProtocol.getComponentData(udpPacket);
-			for(int32_t i = 0; i < (signed)m_connections.size(); ++i)
-				m_connections[i]->sendUdp(Protocol::Data, udpPacket);
-		}
-	}
-
-	//controller data
-	udpPacket.clear();
-	getGame()->getUniverse().getControllerFactory().getNWFactory().getComponentData(udpPacket);
-	for(int32_t i = 0; i < (signed)m_connections.size(); ++i)
-		m_connections[i]->sendUdp(Protocol::Control, udpPacket);
-	++counter;
-}
-/// <summary>
 /// Anyone sending via TCP to all connections
 /// </summary>
 void NetworkBoss::sendTcp()
@@ -561,14 +410,7 @@ void NetworkBoss::playerOption(sf::Packet rData, BasePlayerTraits* pFrom)
 {
 	String command;
 	rData >> command;
-	if(command == "setShip")
-	{
-		String shipName;
-		rData >> shipName;
-		pFrom->setShipChoice(shipName);
-		messageLobby(pFrom->getName() + " changed ship to [" + shipName + "].");
-	}
-	else if(command == "setTeam")
+	if(command == "setTeam")
 	{
 		String steam;
 		rData >> steam;

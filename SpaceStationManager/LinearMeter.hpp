@@ -18,7 +18,7 @@ struct LinearMeterData : public QuadComponentData
 class LinearMeter : public QuadComponent
 {
 public:
-	LinearMeter(const LinearMeterData& rData);
+	LinearMeter(const LinearMeterData& rData, BlueprintParams params);
 	virtual ~LinearMeter();
 	
 	/// \brief Set the meter full percentage.

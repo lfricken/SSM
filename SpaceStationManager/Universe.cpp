@@ -19,7 +19,7 @@ void Universe::loadLevel(const GameLaunchData& data)//loads a level using bluepr
 
 	const String levelFile = "level.lcfg";
 	const String levelFolder = "levels";
-	const String thisLevelFolder = contentDir() + levelFolder + "/" + data.level + "/";
+	const String thisLevelFolder = contentDir() + levelFolder + "/" + data.levelDirectory + "/";
 	const String modDir = "mods/";
 
 	std::ifstream level(thisLevelFolder + levelFile, std::ifstream::binary);
@@ -159,4 +159,8 @@ void Universe::input(String rCommand, sf::Packet rData)
 void Universe::spawnParticles(const String& particleBP, const Vec2& pos, const Vec2& dir, const Vec2& transverse)
 {
 	m_spDecorEngine->spawnParticles(particleBP, pos, dir, transverse);
+}
+float Universe::getTime() const
+{
+	return pauser.getTime();
 }

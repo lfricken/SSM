@@ -10,7 +10,7 @@ namespace leon
 	/// <summary>
 	/// Held by getGame()-> has update called to send mouse events to the drag components.
 	/// </summary>
-	class DragUpdater : NonCopyable
+	class DragUpdater : Core::INonCopyable
 	{
 	public:
 		DragUpdater();

@@ -90,6 +90,7 @@
     <ClInclude Include="stdafx.hpp" />
     <ClInclude Include="Team.hpp" />
     <ClInclude Include="TextureAllocator.hpp" />
+    <ClInclude Include="TimeConfig.hpp" />
     <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Tooltip.hpp" />
     <ClInclude Include="Universe.hpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Spinner.cpp" />
     <ClCompile Include="TextureAllocator.cpp" />
+    <ClCompile Include="TimeConfig.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Tooltip.cpp" />
     <ClCompile Include="Universe.cpp" />

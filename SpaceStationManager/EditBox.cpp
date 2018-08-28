@@ -7,7 +7,7 @@ EditBox::EditBox(tgui::Gui& gui, const EditBoxData& rData) : WidgetBase(gui, rDa
 {
 	f_initialize(rData);
 }
-EditBox::EditBox(tgui::Container& container, const EditBoxData& rData = EditBoxData()) : WidgetBase(container, rData), m_pEditBox(container)
+EditBox::EditBox(tgui::Container& container, const EditBoxData& rData) : WidgetBase(container, rData), m_pEditBox(container)
 {
 	f_initialize(rData);
 }

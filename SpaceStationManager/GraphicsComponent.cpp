@@ -57,11 +57,11 @@ void GraphicsComponent::setPosition(const Vec2& rUniverseCoords)
 }
 void GraphicsComponent::setGuiPosition(const sf::Vector2f& rScreenCoordinates)
 {
-	coordinates = Convert::screenToUniverse((Vec2)Convert::flipYAxis(rScreenCoordinates));
+	coordinates = Convert::screenToUniverse((Vec2)rScreenCoordinates);
 }
 void GraphicsComponent::setRotation(float radCCW)
 {
-	m_rotation = Convert::normRad(radCCW);
+	m_rotation = Math::normalizeRad(radCCW);
 }
 void GraphicsComponent::setOffset(const sf::Vector2f pixels)//sets the origin of us
 {
@@ -88,11 +88,11 @@ const Vec2& GraphicsComponent::getPosition() const
 }
 const sf::Vector2f GraphicsComponent::getGuiPosition() const
 {
-	return Convert::flipYAxis((sf::Vector2f)Convert::universeToScreen(coordinates));
+	return (sf::Vector2f)Convert::universeToScreen(coordinates);
 }
 float GraphicsComponent::getRotation() const
 {
-	return Convert::normRad(m_rotation);
+	return Math::normalizeRad(m_rotation);
 }
 const sf::Vector2f& GraphicsComponent::getOffset() const
 {
@@ -122,7 +122,7 @@ void GraphicsComponent::update()
 sf::Transform GraphicsComponent::getTransform() const
 {
 	sf::Transform transform;
-	transform.translate((sf::Vector2f)Convert::flipYAxis(Convert::universeToScreen(coordinates))).rotate(Convert::radToDeg(-m_rotation - m_permanentRot));
+	transform.translate((sf::Vector2f)Convert::universeToScreen(coordinates)).rotate(Math::toDeg(-m_rotation - m_permanentRot));
 	return transform;
 }
 Vec2 GraphicsComponent::getUnscaledSize() const

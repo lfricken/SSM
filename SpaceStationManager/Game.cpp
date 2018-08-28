@@ -14,17 +14,15 @@
 #include "Universe.hpp"
 #include "NetworkBoss.hpp"
 #include "Convert.hpp"
-#include "SlaveLocator.hpp"
-#include "Chunk.hpp"
 #include "QuadComponent.hpp"
 #include "Spinner.hpp"
 #include "LinearMeter.hpp"
 #include "Beam.hpp"
-#include "RayCastCallback.hpp"
-#include "Projectile.hpp"
 #include "Directory.hpp"
 #include "DecorationEngine.hpp"
-#include "Weapon.hpp"
+#include "MemoryDump.hpp"
+#include "TimeConfig.hpp"
+#include "JSON.hpp"
 
 using namespace leon;
 
@@ -45,13 +43,13 @@ void Game::initialize()
 	m_spSound = sptr<SoundManager>(new SoundManager);
 	sf::Listener::setDirection(0, 0, -1);//make sure all sounds are heard with the listener looking at the screen
 	m_spAnimAlloc = sptr<AnimAlloc>(new AnimAlloc);
-	m_spCoreIO = sptr<IOManager>(new IOManager(true));
+	coreIO = sptr<IOManager>(new IOManager(true));
 
 	NetworkBossData nwData;
 	m_spNetworkBoss = sptr<NetworkBoss>(new NetworkBoss(nwData));
 	IOComponentData overlayData(&getCoreIO());
 	overlayData.name = "overlay";
-	m_spOverlay = sptr<Overlay>(new Overlay(overlayData));
+	m_spOverlay = sptr<Overlay>(new Overlay(overlayData, this, this));
 	m_spOverlay->loadMenus();
 
 	loadPlayer(contentDir() + "settings/GeneralSettings.cfg");
@@ -59,16 +57,13 @@ void Game::initialize()
 	/**== GAME IO COMPONENT ==**/
 	IOComponentData gameData(&getCoreIO());
 	gameData.name = "game";
-	m_spIO = sptr<IOComponent>(new IOComponent(gameData, &Game::input, this));
+	gameIOComponent = sptr<IOComponent>(new IOComponent(gameData, &Game::input, this));
 
 	loadUniverse("RANDOMTEXT");//TODO RANDOMTEXT
-	m_spUniverse->togglePause(true);
+	m_spUniverse->pauser.togglePause(true);
 	m_spUniverse->started = false;
 
 	m_spDir = sptr<Directory>(new Directory(contentDir()));
-
-	ScoreboardData scoreData = ScoreboardData();
-	m_spScoreboard = sptr<Scoreboard>(new Scoreboard(scoreData));
 
 	m_spIcon.reset(new sf::Image());
 	if(m_spIcon->loadFromFile(contentDir() + "textures/" + "gameicon.png"))
@@ -80,7 +75,7 @@ Game::~Game()
 }
 void Game::loadPlayer(const String& rFileName)
 {
-	PlayerData data;
+	PlayerData data(coreIO.get());
 
 	Json::Value root;//Let's parse it
 	Json::Reader reader;
@@ -89,8 +84,7 @@ void Game::loadPlayer(const String& rFileName)
 
 	if(!parsedSuccess)
 	{
-		Print << "\nParse Failed [" << rFileName << "].\n" << FILELINE;
-		///eRROR LOG
+		DEBUGOUTPUT("Parse failed on " + rFileName);
 	}
 	else
 	{
@@ -113,7 +107,7 @@ Overlay& Game::getOverlay()
 }
 IOManager& Game::getCoreIO()
 {
-	return *m_spCoreIO;
+	return *coreIO;
 }
 NetworkBoss& Game::getNwBoss()
 {
@@ -139,10 +133,6 @@ const Directory& Game::getDir() const
 {
 	return *m_spDir;
 }
-Scoreboard& Game::getScoreboard()
-{
-	return *m_spScoreboard;
-}
 void Game::launchGame(const GameLaunchData& data)
 {
 	getGame()->loadUniverse("meaninglessString");
@@ -165,84 +155,41 @@ float Game::getTime() const
 void Game::updateTime()
 {
 	m_lastTime = m_clock.getElapsedTime().asSeconds();
-	m_spUniverse->setTime(m_lastTime);
+	m_spUniverse->pauser.setRealTime(m_lastTime);
 }
-void Game::runTicks(int ticks)
-{
-	if(getGame()->getUniverse().isPaused())
-		getGame()->getUniverse().togglePause();
-
-	sf::RenderWindow& rWindow = *m_spWindow;
-	float frameTime = 0;
-	float lastTime = m_clock.getElapsedTime().asSeconds() - m_estimatedFrameTime;
-
-	for(; ticks > 0; --ticks)
-	{
-		frameTime = m_clock.getElapsedTime().asSeconds() - lastTime;
-		lastTime = m_clock.getElapsedTime().asSeconds();
-		tick(frameTime);
-	}
-
-	if(!getGame()->getUniverse().isPaused())
-		getGame()->getUniverse().togglePause();
-}
-void Game::runTime(float time)
-{
-	if(getGame()->getUniverse().isPaused())
-		getGame()->getUniverse().togglePause();
-
-	sf::RenderWindow& rWindow = *m_spWindow;
-	float frameTime = 0;
-	float lastTime = m_clock.getElapsedTime().asSeconds() - m_estimatedFrameTime;
-
-	for(; time > 0; time -= frameTime)
-	{
-		frameTime = m_clock.getElapsedTime().asSeconds() - lastTime;
-		lastTime = m_clock.getElapsedTime().asSeconds();
-		if(frameTime < 1)
-			tick(frameTime);
-	}
-
-	if(!getGame()->getUniverse().isPaused())
-		getGame()->getUniverse().togglePause();
-}
-/// <summary>
-/// Contains Main Game Loop
-/// </summary>
 void Game::run()
 {
 	sf::RenderWindow& rWindow = *m_spWindow;
-	float frameTime = 0;
+	float frameTime = 0.f;
 	float lastTime = m_clock.getElapsedTime().asSeconds();
+	float ticksNeeded = 0.f;
 
 	while(rWindow.isOpen())
 	{
 		frameTime = m_clock.getElapsedTime().asSeconds() - lastTime;
 		lastTime = m_clock.getElapsedTime().asSeconds();
-		if(frameTime < 1)
-			tick(frameTime);
+		
+		tick(frameTime);
 	}
 }
 void Game::tick(float frameTime)
 {
 	sf::RenderWindow& rWindow = *m_spWindow;
 
-	static float physTickTimeRemaining = 0;
-	static const float timeStep = getUniverse().getTimeStep();
+	float physTickTimeRemaining = 0;
+	const float timeStep = TimeConfig::Instance->getWorldTimeStep();
+	const Vec2 mouseSfmlWorldPos = (Vec2)getWindow().mapPixelToCoords(sf::Mouse::getPosition(getGame()->getWindow()), getLocalPlayer().getCamera().getView());
 
-
-	/**== FRAMERATE ==**/
+	// show framerate
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
 		Print << "\nFPS: " << 1.f / frameTime;
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-		Print << "\nLocal Player Money: " << "fix broken shit";
 
-	/**== IO ==**/
+	// io
 	getCoreIO().update(frameTime);
 	getUniverse().getUniverseIO().update(frameTime);
 	getGame()->updateTime();
 
-	/**== PHYSICS ==**/
+	// physics
 	physTickTimeRemaining += frameTime;
 	while(physTickTimeRemaining >= timeStep)
 	{
@@ -251,16 +198,12 @@ void Game::tick(float frameTime)
 
 		getLocalPlayer().updateView();
 		rWindow.setView(getLocalPlayer().getCamera().getView());
-		getLocalPlayer().getLiveInput();
-		getUniverse().updateShipAI();
-		getUniverse().getControllerFactory().processAllDirectives();
+		getLocalPlayer().getLiveInput(mouseSfmlWorldPos);
 
 		getUniverse().postPhysUpdate();
 		physTickTimeRemaining -= timeStep;
 	}
 
-	/**REWARDS**/
-	getUniverse().teamMoneyUpdate();
 
 	/**NETWORK**/
 	if(m_spNetworkBoss->getNWState() != NWState::Local)
@@ -269,7 +212,6 @@ void Game::tick(float frameTime)
 
 	/**== WINDOW ==**/
 	getDragUpdater().update(getLocalPlayer().getMouseWindowPos());
-	//rWindow.setView(getLocalPlayer().getCamera().getView());
 	rWindow.setView(*m_spStaticView);
 	getLocalPlayer().getWindowEvents(rWindow);
 	const Vec2 camPos = getLocalPlayer().getCamera().getPosition();
@@ -287,15 +229,15 @@ void Game::tick(float frameTime)
 
 	rWindow.setView(getLocalPlayer().getCamera().getView());
 	if(getUniverse().debugDraw())
-		getUniverse().getWorld().DrawDebugData();
+	{
+		// TODO do debug draw
+	}
 	else
 		getUniverse().getBatchLayers().drawWorld(rWindow);
 
 
 	/**== DRAW GUI/OVERLAYS ==**/
-	rWindow.setView(*m_spStaticView);
-	getUniverse().getBatchLayers().drawOverlay(rWindow);
-	m_spOverlay->getGui().draw(false);
+	m_spOverlay->getGui().draw(false); // TODO pass true here ?
 	m_spOverlay->mouseMoveToPosition((sf::Vector2f)sf::Mouse::getPosition(rWindow));
 
 	/**== DISPLAY ==**/
@@ -319,23 +261,17 @@ void Game::loadUniverse(const String& stuff)
 
 	m_spUniverse.reset();
 	m_spUniverse.reset(new Universe(universeData));
-	m_spUniverse->postConstructor();
 
 
 	registerClasses();
 
-	getLocalPlayer().onUniverseCreated();
 
-	m_spUniverse->getUniverseIO().give(m_spIO.get());
+	m_spUniverse->getUniverseIO().give(gameIOComponent.get());
 
 	if(getGame()->getNwBoss().getNWState() == NWState::Client)
 		getUniverse().getUniverseIO().toggleAcceptsLocal(false);
 	else
 		getUniverse().getUniverseIO().toggleAcceptsLocal(true);
-}
-sf::View& Game::getStaticView()
-{
-	return *m_spStaticView;
 }
 /// <summary>
 /// Initializes the window from a json file with the needed data.
@@ -457,16 +393,5 @@ void Game::input(String rCommand, sf::Packet rData)
 	{
 		Print << "Game: [" << rCommand << "] not found.";
 	}
-}
-void Game::restartTest(const String& level)
-{
-	PlayerData player;
-	GameLaunchData data;
-
-	data.level = level;
-	data.localController = -1;
-	getGame()->launchGame(data);
-
-	getGame()->runTicks(10);
 }
 

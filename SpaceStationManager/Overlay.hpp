@@ -51,7 +51,6 @@ namespace leon
 		/// Toggle whether the scoreboard should be visible or not.
 		void toggleScoreboard(bool show);
 
-		sptr<Panel> storePanel;
 	protected:
 		void input(const String rCommand, sf::Packet rData);
 

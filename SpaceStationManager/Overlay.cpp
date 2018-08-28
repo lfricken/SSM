@@ -46,8 +46,6 @@ void Overlay::mouseMoveToPosition(sf::Vector2f pos)
 	{
 		panel->mouseMoveToPosition(pos);
 	}
-	if(storePanel)
-		storePanel->mouseMoveToPosition(pos);
 }
 bool Overlay::handleEvent(sf::Event& rEvent)
 {

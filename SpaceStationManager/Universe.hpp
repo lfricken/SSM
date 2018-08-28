@@ -66,6 +66,10 @@ public:
 	/// Used to create impact particles.
 	void spawnParticles(const String& particleBP, const Vec2& pos, const Vec2& dir, const Vec2& transverse);
 	
+	/// <summary>
+	/// Return time in universe.
+	/// </summary>
+	float getTime() const;
 
 	bool started = true; //tell whether this is the initial universe created by Game, or a later one
 

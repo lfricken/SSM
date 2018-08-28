@@ -21,8 +21,6 @@ public:
 
 	/// Draw everything that is not the Overlay in order.
 	void drawWorld(sf::RenderTarget& rTarget);
-	/// Draw the overlay in order.
-	void drawOverlay(sf::RenderTarget& rTarget);
 
 
 protected:

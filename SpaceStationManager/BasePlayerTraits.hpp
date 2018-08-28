@@ -23,8 +23,6 @@ public:
 	const String& getName() const;
 
 protected:
-	///Which controller do we have, 0, 1, 2, ect.(points to a controller in the list)
-	int m_controller;
 
 private:
 	///In game name.

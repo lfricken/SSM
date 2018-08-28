@@ -19,7 +19,7 @@
 #endif
 
 /// <summary>
-/// Example exported function.
+/// CALL THE MACRO DEBUGOUTPUT or SIMPLEOUTPUT
 /// </summary>
 void LibDebugOutput(std::string file, int line, std::string message)
 {

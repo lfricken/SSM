@@ -59,8 +59,6 @@ public:
 	SoundManager& getSound();
 	/// Return DragUpdater.
 	leon::DragUpdater& getDragUpdater();
-	/// Return SFML View that renders to the standard Window coordinates.
-	sf::View& getStaticView();
 	/// Return Universe.
 	Universe& getUniverse();
 	/// Return Directory.
@@ -71,18 +69,11 @@ public:
 	/// It will minimize the menu's automatically.
 	/// </summary>
 	void launchGame(const GameLaunchData& data);
-	/// A function to be called by tests to reset the global Game object.
-	void restartTest(const String& level = "Testbed");
 	/// If the Window is resized, we should resize the default view as well.
 	void resizeStaticView();
 
 	/// Runs the game on an infinite loop.
 	void run();
-	/// Run the game for a certain amount of ticks, variable time.
-	/// A tick is a single iteration of the game loop.
-	void runTicks(int ticks);
-	/// Run the game for a certain amount of time, variable ticks.
-	void runTime(float time);
 	/// Close the getGame()->
 	void exit(); 
 	/// <summary>
@@ -115,7 +106,7 @@ private:
 	/// IO component for global "game"
 	sptr<leon::DragUpdater> m_spDragUpdater;
 	/// The Global IO Manager for the game, which controlls all events (aka not networked or in game related, such as menus).
-	sptr<IOManager> m_spCoreIO;
+	sptr<IOManager> coreIO;
 	/// Controls all sound for the getGame()->
 	sptr<SoundManager> m_spSound;
 	/// Manages Network Connections.
@@ -135,7 +126,7 @@ private:
 	/// Manages physics world
 	sptr<Universe> m_spUniverse;
 	/// IO component for global "game"
-	sptr<IOComponent> m_spIO;	
+	sptr<IOComponent> gameIOComponent;	
 	/// Directory handler
 	sptr<const Directory> m_spDir;
 	/// Used for a few calculations.

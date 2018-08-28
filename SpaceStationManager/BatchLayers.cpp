@@ -19,21 +19,3 @@ void BatchLayers::drawWorld(sf::RenderTarget& rTarget)
 		rTarget.draw(it->second);
 	}
 }
-void BatchLayers::drawOverlay(sf::RenderTarget& rTarget)
-{
-	{
-		auto it = m_batches.find(GraphicsLayer::OverlayBottom);
-		if(it != m_batches.end())
-			rTarget.draw(it->second);
-	}
-	{
-		auto it = m_batches.find(GraphicsLayer::OverlayMiddle);
-		if(it != m_batches.end())
-			rTarget.draw(it->second);
-	}
-	{
-		auto it = m_batches.find(GraphicsLayer::OverlayTop);
-		if(it != m_batches.end())
-			rTarget.draw(it->second);
-	}
-}

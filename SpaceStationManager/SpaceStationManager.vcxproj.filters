@@ -320,6 +320,9 @@
     <ClInclude Include="Pauser.hpp">
       <Filter>Header Files\System</Filter>
     </ClInclude>
+    <ClInclude Include="TimeConfig.hpp">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -518,6 +521,9 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Pauser.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeConfig.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
