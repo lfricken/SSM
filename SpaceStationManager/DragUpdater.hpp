@@ -8,7 +8,7 @@ namespace leon
 	class DragComponent;
 
 	/// <summary>
-	/// Held by getGame()-> has update called to send mouse events to the drag components.
+	/// Has update called to send mouse coordinates to the drag components.
 	/// </summary>
 	class DragUpdater : Core::INonCopyable
 	{
@@ -17,16 +17,25 @@ namespace leon
 		~DragUpdater();
 
 		/// <summary>
-		/// Given the mouse position as screen coordinates, any DragComponents::isDragging == true objects get moved to that position.
+		/// Given the mouse position as screen coordinates, any DragComponents::isDragging == true objects should get moved to that position.
 		/// </summary>
 		void update(const sf::Vector2f& rPos);
 
-		/// Give a pointer to a DragComponent listening for dragging events.
+		/// <summary>
+		/// Each component registers itself here.
+		/// </summary>
 		void give(leon::DragComponent* pComp);
+
+		/// <summary>
 		/// Remove an object from the listener.
+		/// </summary>
 		void freeThis(leon::DragComponent* pCompToDelete);
 
 	private:
+
+		/// <summary>
+		/// List of components to notify of a mouse move event.
+		/// </summary>
 		List<leon::DragComponent*> m_components;
 	};
 }

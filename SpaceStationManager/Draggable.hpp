@@ -43,11 +43,15 @@ namespace leon
 		virtual ~Draggable();
 
 		/// <summary>
-		/// Data this draggable holds. In this case, name of the module BP it represents.
+		/// Arbitrary data this draggable holds.
 		/// </summary>
 		const String& getMetaData() const;
-		/// Check whether the DraggableSurface already has a Draggable at that position before setting position.
+		
+		/// <summary>
+		/// Checks whether the DraggableSurface already has a Draggable at that position before setting position.
+		/// </summary>
 		bool trySetGridPosition(const sf::Vector2i& rGridPos);
+
 		/// <summary>
 		/// Given the mouse position in screen coordinates, any DragComponents::isDragging == true objects get moved.
 		/// </summary>
@@ -55,26 +59,43 @@ namespace leon
 
 	protected:
 		virtual bool callbackHook2(const tgui::Callback& callback);
+
+		/// <summary>
+		/// We were dropped from being dragged.
+		/// </summary>
 		void dropped();
 
 	private:
 		/// <summary>
-		/// Data this draggable holds. In this case, name of the module BP it represents.
+		/// Bit of data this draggable holds.
 		/// </summary>
 		String m_metaData;
+
 		/// <summary>
 		/// Called by the draggable component when we are getting dragged around.
 		/// </summary>
 		void f_update(const sf::Vector2f& rPos);
 		void f_initialize(const DraggableData& rData);
-		sptr<DragComponent> m_spDrag;
+
 		/// <summary>
-		/// If we want to set this objects position in the panel, given a window coordinate,
+		/// Gets mouse coordinates for us.
+		/// </summary>
+		sptr<DragComponent> m_spDrag;
+
+		/// <summary>
+		/// If we want to set this objects position in the panel, given a window coordinate (mouse position),
 		/// we need to be able to subtract out the panels position.
 		/// </summary>
 		sf::Vector2f m_parentPanelOffset;
+
+		/// <summary>
+		/// Image to be displayed for this draggable.
+		/// </summary>
 		sptr<Picture> m_spPic;
 
+		/// <summary>
+		/// Used to check that the draggable wont overlap with another on the grid being dragged on.
+		/// </summary>
 		DraggableSurface* m_pParent;
 	};
 }

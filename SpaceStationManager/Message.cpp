@@ -3,12 +3,13 @@
 #include "IOManager.hpp"
 #include "Universe.hpp"
 
-/// <summary>
-/// Send messages that should get networked, like damage.
-/// </summary>
 void Message::SendUniverse(const Message& mes)
 {
 	getGame()->getUniverse().getUniverseIO().recieve(mes);
+}
+void Message::SendGame(const Message& mes)
+{
+	getGame()->getCoreIO().recieve(mes);
 }
 
 Message::Message()

@@ -2,17 +2,25 @@
 
 #include "stdafx.hpp"
 
-/// \brief Message which is sent to IOComponents.
-///
-/// Contains a target, either a name or an IOComponent Position,
+/// <summary>
+/// Message which is sent to IOComponents.
+/// Contains a target, either a name or an IOComponent Factory position,
 /// a command, which the target object uses to determine what the intended action was
 /// a data packet for any additional data to be sent with the action
 /// a delay, so the message may not be recieved immediately
 /// a boolean to determine whether the data packet should contain Run Time Information (use false unless you know what you are doing)
+/// </summary>
 class Message
 {
 public:
+	/// <summary>
+	/// Send this message to the universe (potentially networked).
+	/// </summary>
 	static void SendUniverse(const Message& mes);
+	/// <summary>
+	/// Send this message to the local game.
+	/// </summary>
+	static void SendGame(const Message& mes);
 
 	Message();
 	Message(const String& rTargetName, const String& rCommand, const sf::Packet& rData, float delay, bool replaceData);

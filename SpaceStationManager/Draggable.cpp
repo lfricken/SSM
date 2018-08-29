@@ -38,7 +38,7 @@ const String& Draggable::getMetaData() const
 }
 bool Draggable::trySetGridPosition(const sf::Vector2i& rGridPos)
 {
-	if(m_pParent->hasOneAt(rGridPos))
+	if(m_pParent->hasOneAt(rGridPos)) // prevent overlapping draggables
 	{
 		this->setGridPosition(m_lastGridPosition);
 		return false;
@@ -81,7 +81,7 @@ bool Draggable::callbackHook2(const tgui::Callback& callback)
 		data << true;//center it
 		data << true;//mouse off closes (otherwise you need a close button)
 		Message selection("return_selection", "show_sellscreen", data, 0, false);
-		getGame()->getCoreIO().recieve(selection);
+		Message::SendGame(selection);
 		return true;
 	}
 	else
@@ -93,9 +93,6 @@ void Draggable::f_update(const sf::Vector2f& rPos)
 	offsetToCenter = sf::Vector2f(offsetToCenter.x / 2, offsetToCenter.y / 2);
 	this->setPosition(rPos - m_parentPanelOffset - offsetToCenter);
 }
-/// <summary>
-/// we were dropped (from being dragged)
-/// </summary>
 void Draggable::dropped()
 {
 	m_spDrag->toggleDragging(false);
